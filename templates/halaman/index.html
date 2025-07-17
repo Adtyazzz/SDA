@@ -1,0 +1,607 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portal Informasi SDA</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Logo_Kementerian_Pekerjaan_Umum_Republik_Indonesia.svg/2048px-Logo_Kementerian_Pekerjaan_Umum_Republik_Indonesia.svg.png" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MediTrust
+  * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
+  * Updated: Jul 04 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+
+        
+      </a>
+
+    {% include 'halaman/navbar.html' %}
+     
+    {% if user.is_authenticated %} 
+      <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+    {% else %}
+      <a href="{% url 'akun_login' %}">LOGIN</a>
+    {% endif %}  
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container-fluid p-0">
+        <div class="hero-wrapper">
+          <div class="hero-image">
+            <img src="{% static 'halaman/assets/img/health/PUpng.png' %}" alt="Advanced Healthcare" class="img-fluid">
+          </div>
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
+                  <div class="content-box">
+                    <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Leading Healthcare Specialists</span>
+                    <h1 data-aos="fade-up" data-aos-delay="200">Dinas PU SDA — Melayani, Membangun, dan Mengelola Air untuk Masa Depan </h1>
+                    <p data-aos="fade-up" data-aos-delay="250">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+
+                    <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
+                      <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
+                      <a href="services.html" class="btn btn-outline">Explore Services</a>
+                    </div>
+
+                    <div class="info-badges" data-aos="fade-up" data-aos-delay="350">
+                      <div class="badge-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <div class="badge-content">
+                          <span>Emergency Line</span>
+                          <strong>+1 (555) 987-6543</strong>
+                        </div>
+                      </div>
+                      <div class="badge-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <div class="badge-content">
+                          <span>Working Hours</span>
+                          <strong>Mon-Fri: 7.30 WITA-16.00 WITA</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="features-wrapper">
+                <div class="row gy-4">
+
+                  <div class="col-lg-4">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
+                      <div class="feature-icon">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>Cardiology</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+                      <div class="feature-icon">
+                        <i class="bi bi-lungs-fill"></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>Pulmonology</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="550">
+                      <div class="feature-icon">
+                        <i class="bi bi-capsule"></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>Diagnostics</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- Home About Section -->
+    <section id="home-about" class="home-about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="about-image">
+              <img src="{% static 'halaman/assets/img/yuhu.webp' %}" alt="Modern Healthcare Facility" class="img-fluid rounded-3 mb-4">
+              <div class="experience-badge bg-transparent" style="background-color: transparent; box-shadow: none;">
+                <span class="years"><img src="https://images.seeklogo.com/logo-png/35/1/pu-logo-png_seeklogo-355609.png" alt="Logo" style="height:60px;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="about-content">
+              <h2>Direktorat Jenderal Sumber Daya Air</h2>
+              <p class="lead" style="text-align: justify;">Direktorat Jenderal Sumber Daya Air mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang pengelolaan sumber daya air sesuai dengan ketentuan peraturan perudang-undangan.</p>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat magna eu accumsan mattis. Duis non augue in tortor facilisis tincidunt ac sit amet sapien. Suspendisse id risus non nisi sodales condimentum.</p>
+
+              <div class="row g-4 mt-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                  <div class="feature-item">
+                    <div class="icon">
+                      <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <h4>Compassionate Care</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                  <div class="feature-item">
+                    <div class="icon">
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <h4>Medical Excellence</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cta-wrapper mt-4">
+                <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+                <a href="#" class="btn btn-outline">Meet Our Team</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 pt-4 certifications-row" data-aos="fade-up" data-aos-delay="600">
+          <div class="col-12 text-center mb-4">
+            <h4 class="certification-title">Our Accreditations</h4>
+          </div>
+          <div class="col-12">
+            <div class="certifications">
+              <div class="certification-item" data-aos="zoom-in" data-aos-delay="700">
+                <a href="https://sahabat.pu.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/1.png' %}" alt="Certification">
+                </a>
+              </div>
+              <div class="certification-item" data-aos="zoom-in" data-aos-delay="800">
+                <a href="https://www.lapor.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/2.png' %}" alt="Certification">
+                </a>
+              </div>
+              <div class="certification-item" data-aos="zoom-in" data-aos-delay="900">
+                <a href="https://saberpungli.polkam.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/3.png' %}" href="" alt="Certification">
+                </a>
+              </div>
+              <div class="certification-item" data-aos="zoom-in" data-aos-delay="1000">
+                <a href="https://sahabat.pu.go.id/eppid/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/4.png' %}" alt="Certification">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Home About Section -->
+
+    <!-- Featured Departments Section -->
+    <section id="featured-departments" class="featured-departments section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Featured Departments</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/cardiology-3.webp' %}" alt="Cardiology Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Cardiology</h3>
+                <p>Comprehensive cardiovascular care with advanced diagnostic techniques and treatment options for heart conditions, ensuring optimal cardiac health for all patients.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/neurology-2.webp' %}" alt="Neurology Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-brain"></i>
+                </div>
+                <h3>Neurology</h3>
+                <p>Expert neurological care specializing in brain and nervous system disorders, providing cutting-edge treatments and compassionate support for neurological conditions.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/orthopedics-4.webp' %}" alt="Orthopedics Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-bone"></i>
+                </div>
+                <h3>Orthopedics</h3>
+                <p>Advanced musculoskeletal care focusing on bones, joints, and muscles with innovative surgical and non-surgical treatment approaches for mobility restoration.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/pediatrics-3.webp' %}" alt="Pediatrics Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-baby"></i>
+                </div>
+                <h3>Pediatrics</h3>
+                <p>Specialized healthcare for children from infancy through adolescence, offering comprehensive medical care in a child-friendly environment with experienced pediatric specialists.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/oncology-4.webp' %}" alt="Oncology Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Oncology</h3>
+                <p>Comprehensive cancer care with multidisciplinary approach, offering advanced treatment options, clinical trials, and compassionate support throughout the cancer journey.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="department-card">
+              <div class="department-image">
+                <img src="{% static 'halaman/assets/img/health/emergency-2.webp' %}" alt="Emergency Department" class="img-fluid">
+              </div>
+              <div class="department-content">
+                <div class="department-icon">
+                  <i class="fas fa-ambulance"></i>
+                </div>
+                <h3>Emergency Care</h3>
+                <p>Round-the-clock emergency medical services with rapid response capabilities, state-of-the-art equipment, and experienced emergency physicians for critical care.</p>
+                <a href="department-details.html" class="btn-learn-more">
+                  <span>Learn More</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Department Card -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Departments Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Featured Services</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="service-content">
+                <h3>Cardiology Excellence</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                <ul class="service-features">
+                  <li><i class="fas fa-check-circle"></i>Advanced Heart Surgery</li>
+                  <li><i class="fas fa-check-circle"></i>24/7 Emergency Care</li>
+                  <li><i class="fas fa-check-circle"></i>Preventive Screenings</li>
+                </ul>
+                <a href="services.html" class="service-btn">
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Service Card -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="service-content">
+                <h3>Neurology &amp; Brain Health</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+                <ul class="service-features">
+                  <li><i class="fas fa-check-circle"></i>Brain Imaging &amp; Diagnostics</li>
+                  <li><i class="fas fa-check-circle"></i>Stroke Treatment Center</li>
+                  <li><i class="fas fa-check-circle"></i>Neurological Rehabilitation</li>
+                </ul>
+                <a href="services.html" class="service-btn">
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Service Card -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-bone"></i>
+              </div>
+              <div class="service-content">
+                <h3>Orthopedic Surgery</h3>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error.</p>
+                <ul class="service-features">
+                  <li><i class="fas fa-check-circle"></i>Joint Replacement Surgery</li>
+                  <li><i class="fas fa-check-circle"></i>Sports Medicine</li>
+                  <li><i class="fas fa-check-circle"></i>Minimally Invasive Procedures</li>
+                </ul>
+                <a href="services.html" class="service-btn">
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Service Card -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-ambulance"></i>
+              </div>
+              <div class="service-content">
+                <h3>Emergency &amp; Trauma Care</h3>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                <ul class="service-features">
+                  <li><i class="fas fa-check-circle"></i>24/7 Emergency Department</li>
+                  <li><i class="fas fa-check-circle"></i>Level 1 Trauma Center</li>
+                  <li><i class="fas fa-check-circle"></i>Critical Care Units</li>
+                </ul>
+                <a href="services.html" class="service-btn">
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div><!-- End Service Card -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Services Section -->
+
+    <!-- Find A Doctor Section -->
+ 
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 data-aos="fade-up" data-aos-delay="200">Your Health is Our Priority</h2>
+            <p data-aos="fade-up" data-aos-delay="250">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+              <a href="appointment.html" class="btn-primary">Book Appointment</a>
+              <a href="doctors.html" class="btn-secondary">Find a Doctor</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row features-row" data-aos="fade-up" data-aos-delay="400">
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <h5>24/7 Emergency Care</h5>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+              <a href="#" class="feature-link">
+                <span>Learn More</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <h5>Easy Online Booking</h5>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <a href="#" class="feature-link">
+                <span>Book Now</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-people"></i>
+              </div>
+              <h5>Expert Medical Team</h5>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
+              <a href="#" class="feature-link">
+                <span>Meet Our Doctors</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="emergency-alert" data-aos="zoom-in" data-aos-delay="500">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <div class="emergency-content">
+                <div class="emergency-icon">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="emergency-text">
+                  <h4>Medical Emergency?</h4>
+                  <p>Call our 24/7 emergency hotline for immediate assistance</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 text-end">
+              <a href="tel:911" class="emergency-btn">
+                <i class="bi bi-telephone-fill"></i>
+                Call (555) 123-4567
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Emergency Info Section -->
+    
+
+  </main>
+
+{% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
