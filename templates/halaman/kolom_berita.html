@@ -1,0 +1,14 @@
+<!-- berita_terkini.html -->
+<div class="berita-terkini">
+  <div class="judul-box">BERITA TERKINI</div>
+  {% for artikel in daftar_berita %}
+    <div class="berita-item">
+      <div class="berita-gambar">
+        <img src="{{ artikel.thumbnail.url }}" alt="gambar berita">
+      </div>
+      <div class="berita-judul">
+        {{ artikel.judul }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

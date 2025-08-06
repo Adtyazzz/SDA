@@ -1,7 +1,4 @@
 {% load static %}
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -252,128 +249,52 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Departments</h2>
+        <h2>Berita Terkini</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
-
+          {% for artikel in data_artikel %}
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="department-card">
               <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/cardiology-3.webp' %}" alt="Cardiology Department" class="img-fluid">
+                {% if artikel.thumbnail %}
+                <a href="{% url 'artikel_detail' artikel.id %}"><img src="{{ artikel.thumbnail.url }}" alt="Cardiology Department" class="img-fluid"></a>
+                {% else %}
+               <a href="{% url 'artikel_detail' artikel.id %}"><img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt=""></a>
+                {% endif %}
               </div>
               <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3>Cardiology</h3>
-                <p>Comprehensive cardiovascular care with advanced diagnostic techniques and treatment options for heart conditions, ensuring optimal cardiac health for all patients.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div><!-- End Department Card -->
+              <h6 class="category artikel-tanggal">{{ artikel.kategori }}</h6>
+              <h3><a href="{% url 'artikel_detail' artikel.id %}">{{ artikel.judul }}</a></h3>
+              <p>{{ artikel.isi | safe | truncatechars:'300' }}</p>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="department-card">
-              <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/neurology-2.webp' %}" alt="Neurology Department" class="img-fluid">
-              </div>
-              <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-brain"></i>
+              <!-- Tombol Learn More -->
+              <a href="{% url 'artikel_detail' artikel.id %}" class="btn-learn-more">
+                <span>Baca Selengkapnya</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              
+              <!-- Tanggal -->
+                <hr class="my-2" />
+                <div class="artikel-tanggal">
+                  <i class="fa fa-calendar"></i> {{ artikel.tgl_buat }}
                 </div>
-                <h3>Neurology</h3>
-                <p>Expert neurological care specializing in brain and nervous system disorders, providing cutting-edge treatments and compassionate support for neurological conditions.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div><!-- End Department Card -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="department-card">
-              <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/orthopedics-4.webp' %}" alt="Orthopedics Department" class="img-fluid">
-              </div>
-              <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-bone"></i>
+                <div class="artikel-tanggal">
+                  <i class="bi bi-eye"></i> {{ artikel.views }} pembaca
                 </div>
-                <h3>Orthopedics</h3>
-                <p>Advanced musculoskeletal care focusing on bones, joints, and muscles with innovative surgical and non-surgical treatment approaches for mobility restoration.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div><!-- End Department Card -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="department-card">
-              <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/pediatrics-3.webp' %}" alt="Pediatrics Department" class="img-fluid">
-              </div>
-              <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-baby"></i>
-                </div>
-                <h3>Pediatrics</h3>
-                <p>Specialized healthcare for children from infancy through adolescence, offering comprehensive medical care in a child-friendly environment with experienced pediatric specialists.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
             </div>
-          </div><!-- End Department Card -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="department-card">
-              <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/oncology-4.webp' %}" alt="Oncology Department" class="img-fluid">
-              </div>
-              <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Oncology</h3>
-                <p>Comprehensive cancer care with multidisciplinary approach, offering advanced treatment options, clinical trials, and compassionate support throughout the cancer journey.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
             </div>
-          </div><!-- End Department Card -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="department-card">
-              <div class="department-image">
-                <img src="{% static 'halaman/assets/img/health/emergency-2.webp' %}" alt="Emergency Department" class="img-fluid">
-              </div>
-              <div class="department-content">
-                <div class="department-icon">
-                  <i class="fas fa-ambulance"></i>
-                </div>
-                <h3>Emergency Care</h3>
-                <p>Round-the-clock emergency medical services with rapid response capabilities, state-of-the-art equipment, and experienced emergency physicians for critical care.</p>
-                <a href="department-details.html" class="btn-learn-more">
-                  <span>Learn More</span>
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
+          </div>
+          <!-- End Department Card -->
+          {% endfor %}
+          <div class="">
+            <a href="{% url 'list_artikel' %}"><button type="button" class="btn btn-accent">Lihat Daftar Berita Lainnya</button></a>
             </div>
-          </div><!-- End Department Card -->
-
         </div>
 
       </div>
@@ -390,92 +311,56 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+        
         <div class="row gy-4">
-
+          
+          {% for foto in data_foto %}
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-heartbeat"></i>
+              <div>
+                <img src="{{ foto.Foto_dokumentasi.url }}" alt="Foto Dokumentasi" class="img-fluid custom-img"  />
               </div>
               <div class="service-content">
-                <h3>Cardiology Excellence</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                <ul class="service-features">
-                  <li><i class="fas fa-check-circle"></i>Advanced Heart Surgery</li>
-                  <li><i class="fas fa-check-circle"></i>24/7 Emergency Care</li>
-                  <li><i class="fas fa-check-circle"></i>Preventive Screenings</li>
-                </ul>
-                <a href="services.html" class="service-btn">
+                <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ foto.nama_kegiatan }}</h3>
+                <p>{{ foto.uraian_singkat }}</p>
+                <a href="{% url 'foto' %}" class="service-btn">
                   Learn More
                   <i class="fas fa-arrow-right"></i>
                 </a>
+                <hr class="my-2" />
+                <div class="artikel-tanggal">
+                  <i class="fa fa-calendar"></i> {{ foto.tanggal_kegiatan }}
+                </div>
               </div>
             </div>
-          </div><!-- End Service Card -->
-
+          </div>
+          {% endfor %}
+          <!-- End Service Card -->
+           {% for video in data_video %}
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-brain"></i>
+              <div>
+                 <video class="w-100 rounded" controls style="max-height: 250px; object-fit: cover;">
+              <source src="{{ video.file_video.url }}" type="video/mp4">
+              Browser Anda tidak mendukung pemutar video.
+            </video>
               </div>
               <div class="service-content">
-                <h3>Neurology &amp; Brain Health</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                <ul class="service-features">
-                  <li><i class="fas fa-check-circle"></i>Brain Imaging &amp; Diagnostics</li>
-                  <li><i class="fas fa-check-circle"></i>Stroke Treatment Center</li>
-                  <li><i class="fas fa-check-circle"></i>Neurological Rehabilitation</li>
-                </ul>
-                <a href="services.html" class="service-btn">
+                <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ video.judul_video }}</h3>
+                <p>{{ video.uraian_singkat }}</p>
+                <a href="{% url 'video' %}" class="service-btn">
                   Learn More
                   <i class="fas fa-arrow-right"></i>
                 </a>
+                <hr class="my-2" />
+                <div class="artikel-tanggal">
+                  <i class="fa fa-calendar"></i> {{ video.tanggal_kegiatan }}
+                </div>
               </div>
             </div>
-          </div><!-- End Service Card -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-bone"></i>
-              </div>
-              <div class="service-content">
-                <h3>Orthopedic Surgery</h3>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error.</p>
-                <ul class="service-features">
-                  <li><i class="fas fa-check-circle"></i>Joint Replacement Surgery</li>
-                  <li><i class="fas fa-check-circle"></i>Sports Medicine</li>
-                  <li><i class="fas fa-check-circle"></i>Minimally Invasive Procedures</li>
-                </ul>
-                <a href="services.html" class="service-btn">
-                  Learn More
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div><!-- End Service Card -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-ambulance"></i>
-              </div>
-              <div class="service-content">
-                <h3>Emergency &amp; Trauma Care</h3>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <ul class="service-features">
-                  <li><i class="fas fa-check-circle"></i>24/7 Emergency Department</li>
-                  <li><i class="fas fa-check-circle"></i>Level 1 Trauma Center</li>
-                  <li><i class="fas fa-check-circle"></i>Critical Care Units</li>
-                </ul>
-                <a href="services.html" class="service-btn">
-                  Learn More
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div><!-- End Service Card -->
+          </div>
+          {% endfor %}
+          <!-- End Service Card -->
 
         </div>
 

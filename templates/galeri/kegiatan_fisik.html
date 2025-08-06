@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gallery - MediTrust Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css'%}" rel="stylesheet">
+</head>
+
+<body class="gallery-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+    <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+      <div class="navbar-brand d-flex align-items-center">
+        <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+        <h1 class="sitename m-0">Portal Informasi SDA</h1>
+      </div>
+    </a>
+
+    {% include 'halaman/navbar.html' %}
+
+    <!-- Pindahkan toggle di sini, DI LUAR navmenu -->
+    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
+    <a class="btn-getstarted" href="appointment.html">Appointment</a>
+  </div>
+</header>
+
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'foto' %}">Galeri</a></li>
+            <li class="breadcrumb-item active current">Kegiatan Fisik</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="text-center mb-4 d-flex flex-wrap justify-content-center gap-2">
+        <!-- Tombol SEMUA -->
+        <a href="?kategori=all{% if query %}&q={{ query }}{% endif %}"
+           class="btn btn-album {% if not selected_kategori_id %}active{% endif %}">
+            Semua
+        </a>
+
+        <!-- Tombol kategori -->
+        {% for kategori in kategori_list %}
+          <a href="?kategori={{ kategori.id }}{% if query %}&q={{ query }}{% endif %}"
+             class="btn btn-album {% if selected_kategori_id == kategori.id|stringformat:'s' %}active{% endif %}">
+              {{ kategori.nama_kategori }}
+          </a>
+        {% endfor %}
+      </div>
+
+      <form method="GET" class="d-flex justify-content-center mb-4" role="search">
+        <div class="input-group" style="max-width: 400px;">
+          <input type="text" name="q" class="form-control" placeholder="Cari kegiatan..." value="{{ request.GET.q|default:'' }}">
+          <button class="btn btn-primary" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+
+      <div class="title-wrapper">
+        <h1>Galeri Foto Kegiatan Fisik</h1>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+          {% for kegiatan_fisik in foto_kegiatan %}
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
+              <div class="gallery-card">
+                <div class="gallery-img">
+                  <img src="{{ kegiatan_fisik.Foto_dokumentasi.url }}" class="img-fluid" alt="Gallery Image" loading="lazy">
+                  <div class="gallery-overlay">
+                    <div class="gallery-info">
+                      <h4>{{ kegiatan_fisik.nama_kegiatan }}</h4>
+                      <p>{{ kegiatan_fisik.uraian_singkat }}</p>
+                      <a href="{{ kegiatan_fisik.Foto_dokumentasi.url }}" class="glightbox gallery-link" data-gallery="gallery-images">
+                        <i class="bi bi-plus-circle"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if foto_kegiatan|length == 0 %}
+          <div class="col-12 text-center mt-5">
+            <p>Tidak ada kegiatan ditemukan.</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+    <!-- End Gallery Section -->
+
+  </main>
+
+  {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js'%}"></script>
+
+  <!-- Script Toggle Mobile Nav -->
+  
+
+</body>
+
+</html>

@@ -1,84 +1,88 @@
 {% load static %}
 
-<footer id="footer" class="footer position-relative section-accent">
+<footer id="footer" class="footer position-relative section-accent bg-dark text-light py-5">
+  <div class="container footer-top">
+    <div class="row gy-4">
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="/" class="logo d-flex align-items-center">
-            <div class="mt-2"> <img src="{% static 'halaman/assets/img/Logo_pupr.png' %}" alt="Logo Kantor" style="height: 120px; vertical-align: middle; margin-right: 50px; width: 160px;">
-            </div>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
+      <!-- Logo & Kontak -->
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="/" class="logo d-flex align-items-center mb-3">
+          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo Kantor" width="50" height="50" class="me-2">
+          <h5 class="mb-0 text-light">KaltimProv</h5>
+        </a>
+        <div class="footer-contact">
+          <p>Jl. Adam Street No.108</p>
+          <p>New York, NY 535022</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
+        <div class="social-links d-flex mt-4 gap-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-linkedin"></i></a>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
-        </div>
-
       </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <!-- Navigasi Footer -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3">Navigasi</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Beranda</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Tentang Kami</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Layanan</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Syarat & Ketentuan</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Kebijakan Privasi</a></li>
+        </ul>
       </div>
-    </div>
 
-  </footer>
+      <!-- Layanan Kami -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3">Layanan</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Web Design</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Development</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Manajemen Produk</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Marketing</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Grafis</a></li>
+        </ul>
+      </div>
+
+      <!-- Info Tambahan -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3">Informasi</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Karir</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Bantuan</a></li>
+          <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Kontak</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <!-- Tautan Ekstra -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3">Ekstra</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Blog</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Event</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Galeri</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Berita</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Download</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Garis Pemisah -->
+  <hr class="text-secondary mt-5">
+
+  <!-- Copyright -->
+  <div class="container text-center mt-3">
+    <p class="mb-1">© <strong>2025</strong> <span class="sitename text-light">KaltimProv</span>. All Rights Reserved.</p>
+    <div class="credits small text-secondary">
+      Desain oleh <a href="https://bootstrapmade.com/" class="text-decoration-none text-light">BootstrapMade</a>
+    </div>
+  </div>
+</footer>

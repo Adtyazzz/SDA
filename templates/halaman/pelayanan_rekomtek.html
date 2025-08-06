@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>About - MediTrust Bootstrap Template</title>
+  <title>Pelayanan Rekomendasi Teknis</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{% static 'halaman/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
   <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -62,7 +62,6 @@
     {% endif %}  
     </div>
   </header>
-
   <main class="main">
 
     <!-- Page Title -->
@@ -71,8 +70,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active current">About</li>
+            <li class="breadcrumb-item active current">Rekomtek</li>
           </ol>
         </nav>
       </div>
@@ -101,30 +99,10 @@
                 <li>Mendukung tertib administrasi dalam perizinan pemanfaatan sumber daya air.</li>
                 <li>Memberikan dasar teknis yang dapat digunakan dalam proses perizinan atau pelaksanaan kegiatan konstruksi.</li>
               </ul>
-              <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
-                <div class="row gy-4">
-                  <div class="col-sm-6 col-lg-12 col-xl-6">
-                    <div class="stat-item">
-                      <div class="stat-number">
-                        <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>+
-                      </div>
-                      <div class="stat-label">Years of Experience</div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-12 col-xl-6">
-                    <div class="stat-item">
-                      <div class="stat-number">
-                        <span data-purecounter-start="0" data-purecounter-end="50000" data-purecounter-duration="2" class="purecounter"></span>+
-                      </div>
-                      <div class="stat-label">Patients Treated</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-                <a href="#" class="btn-primary">Meet Our Doctors</a>
-                <a href="#" class="btn-secondary">View Our Services</a>
+                <a href="{% url 'form_rekomtek' %}" class="btn-secondary">Ajukan Permohonan</a>
+                <a href="{% url 'status_permohonan' %}" class="btn-primary">Status Permohonan</a>
               </div>
             </div>
           </div>
@@ -132,7 +110,7 @@
           <div class="col-lg-6">
             <div class="image-section" data-aos="fade-left" data-aos-delay="200">
               <div class="main-image">
-                <img src="{% static 'halaman/assets/img/health/consultation-3.webp' %}" alt="Healthcare consultation" class="img-fluid">
+                <img src="{% static 'halaman/assets/img/images.png' %}  " alt="Healthcare consultation" class="img-fluid">
               </div>
               <div class="image-grid">
                 <div class="grid-item">
@@ -146,7 +124,7 @@
           </div>
         </div>
 
-        <div class="certifications-section" data-aos="fade-up" data-aos-delay="400">
+        <!-- <div class="certifications-section" data-aos="fade-up" data-aos-delay="400">
           <div class="row">
             <div class="col-lg-12">
               <div class="section-header">
@@ -175,7 +153,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 

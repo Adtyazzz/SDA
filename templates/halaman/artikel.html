@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Berita Terkini</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MediTrust
+  * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
+  * Updated: Jul 04 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="about-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+        <div class="navbar-brand d-flex align-items-center">
+          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+          <h1 class="sitename m-0">Portal Informasi SDA</h1>
+        </div>
+      </a>
+
+      {% include 'halaman/navbar.html' %}
+
+      {% if user.is_authenticated %} 
+        <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+      {% else %}
+        <a href="{% url 'akun_login' %}">LOGIN</a>
+      {% endif %}
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="title-wrapper">
+        <h1>{{ artikel.judul }}</h1>
+      </div>
+    </div>
+    <!-- End Page Title --> 
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <!-- Konten Artikel -->
+          <div class="col-lg-8">
+            <div class="content">
+              {% if artikel.thumbnail %}
+                <img src="{{ artikel.thumbnail.url }}" alt="{{ artikel.judul }}" class="artikel-thumbnail">
+              {% else %}
+                <img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt="">
+              {% endif %}
+              <div class="">
+              <p>{{ artikel.isi | safe }}</p>
+              </div>
+              <blockquote>
+                <small>created by: {{ artikel.author }}</small>
+              </blockquote>
+              <blockquote>
+                <small>Category : {{ artikel.kategori }}</small>
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Sidebar Berita Terkini -->
+          <div class="col-lg-4">
+            <div class="position-sticky" style="top: 100px;">
+              <div class="card border-0 shadow-sm">
+                <!-- Header -->
+                <div class="card-header section-accent text-white fw-bold" style="position: relative;">
+                  BERITA TERKINI
+                  <div style="position: absolute; right: -15px; bottom: -15px; width: 60px; height: 30px; background: #f9c400; border-top-left-radius: 50px;"></div>
+                </div>
+
+                <!-- List berita -->
+                <div class="list-group list-group-flush">
+                  {% for berita in berita_terkini %}
+                    <a href="{{ berita.get_absolute_url }}" class="list-group-item list-group-item-action d-flex gap-3 align-items-center">
+                      {% if berita.thumbnail %}
+                        <img src="{{ berita.thumbnail.url }}" alt="{{ berita.judul }}" style="width: 80px; height: 60px; object-fit: cover;" class="rounded">
+                      {% else %}
+                        <img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt="gambar tidak tersedia" style="width: 80px; height: 60px; object-fit: cover;" class="rounded">
+                      {% endif %}
+                      <div class="small fw-bold">{{ berita.judul|truncatechars:80|default:"<i>Judul tidak ada</i>"|safe }}</div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End row -->
+      </div> <!-- End container -->
+    </section>
+    <!-- /About Section -->
+
+  </main>
+
+  {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+
