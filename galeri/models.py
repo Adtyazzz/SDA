@@ -63,4 +63,18 @@ class Video(models.Model):
         return self.judul_video
     
     class Meta:
-        verbose_name_plural = '5. Video'
+        verbose_name_plural = '5. Video Kegiatan Fisik'
+
+class VideoKegiatanPerencanaan(models.Model):
+    judul_video = models.CharField(max_length=255, blank=True, null=True)
+    uraian_singkat = models.CharField(max_length=255, blank=True, null=True)
+    file_video = models.FileField(upload_to='video/')
+    tanggal_kegiatan = models.DateField()
+    tanggal_upload = models.DateField(auto_now_add=True)
+    views = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.judul_video
+    
+    class Meta:
+        verbose_name_plural = '5. Video Kegiatan Perencanaan'

@@ -2,109 +2,115 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>About - MediTrust Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="{% static 'halaman/assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MediTrust
-  * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
-  * Updated: Jul 04 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body class="about-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
-        <div class="navbar-brand d-flex align-items-center">
-          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
-          <h1 class="sitename m-0">Portal Informasi SDA</h1>
-        </div>
-      </a>
-
-      {% include 'halaman/navbar.html' %}
-
-      {% if user.is_authenticated %} 
+  
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{{ title }}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+    <!-- Favicons -->
+    <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+    <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    
+    <!-- Main CSS File -->
+    <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+    
+    <!-- =======================================================
+    * Template Name: MediTrust
+    * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
+    * Updated: Jul 04 2025 with Bootstrap v5.3.7
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+  </head>
+  
+  <body class="about-page">
+    
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+        
+        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+          <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+        
+        {% if user.is_authenticated %} 
         <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-      {% else %}
+        {% else %}
         <a href="{% url 'akun_login' %}">LOGIN</a>
-      {% endif %}
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title">
-      <div class="title-wrapper">
-        <h1>{{ infrastruktur_detail.nama }}</h1>
+        {% endif %}
+        
       </div>
-    </div>
-    <!-- End Page Title --> 
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <!-- Konten Artikel -->
-          <div class="col-lg-8">
-            <div class="content">
-              {% if infrastruktur_detail.gambar %}
+    </header>
+    
+    <main class="main">
+      
+      <!-- Page Title -->
+      <div class="page-title">
+        <div class="title-wrapper">
+          <h1>{{ infrastruktur_detail.nama }}</h1>
+        </div>
+      </div>
+      <!-- End Page Title --> 
+      
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+            
+            <!-- Konten Artikel -->
+            <div class="col-lg-8">
+              <div class="content">
+                {% if infrastruktur_detail.gambar %}
                 <img src="{{ infrastruktur_detail.gambar.url }}" alt="{{ infrastruktur_detail.nama }}" class="artikel-thumbnail">
-              {% else %}
+                {% else %}
                 <img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt="">
-              {% endif %}
-              <div class="">
-              <p>{{ infrastruktur_detail.uraian | safe }}</p>
+                {% endif %}
+                  <div class="artikel-tanggal d-flex align-items-center">
+              <i class="fa fa-calendar text-primary me-2"></i>
+              <span class="badge bg-light text-dark border rounded-pill px-3 py-2 shadow-sm">
+                {{ infrastruktur_detail.tgl_buat|date:"d F Y" }}
+              </span>
             </div>
-            <div class="content-area">
-            {{ infrastruktur_detail.data_teknis | safe}}
-            </div>
-            <div>
-                <style>
-    table td, table th {
-      text-align: center; /* Pusatkan semua teks di dalam sel */
-      vertical-align: middle; /* Posisi tengah vertikal */
-    }
-  </style>
+                <div class="">
+                  <p>{{ infrastruktur_detail.uraian | safe }}</p>
+                </div>
+                <div class="content-area">
+                  {{ infrastruktur_detail.data_teknis | safe}}
+                </div>
+                <div>
+                  <style>
+                    table td, table th {
+                      text-align: center; /* Pusatkan semua teks di dalam sel */
+                      vertical-align: middle; /* Posisi tengah vertikal */
+                    }
+                    </style>
 <body>
-
+  
   <div class="container my-5">
     <h5 class="text-center mb-4">DATA PEKERJAAN</h5>
-
+    
     <div class="table-responsive d-flex justify-content-center">
       <table class="table table-bordered table-striped table-sm" style="max-width: 600px;">
         <tbody>
@@ -162,6 +168,8 @@
                       <div class="small fw-bold">{{ infrastruktur.nama|truncatechars:80|default:"<i>Judul tidak ada</i>"|safe }}</div>
                     </a>
                   {% endfor %}
+
+                  
                 </div>
               </div>
             </div>

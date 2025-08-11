@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Gallery - MediTrust Bootstrap Template</title>
+  <title>{{ title }}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{% static 'halaman/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
   <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -47,7 +47,7 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
        <div class="navbar-brand d-flex align-items-center">
-          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+          <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
           <h1 class="sitename m-0">Portal Informasi SDA</h1>
         </div>
       </a>
@@ -73,7 +73,7 @@
         </nav>
       </div>
 
-      <form method="GET" class="d-flex justify-content-center mb-4" role="search">
+      <!-- <form method="GET" class="d-flex justify-content-center mb-4" role="search">
   <div class="input-group" style="max-width: 400px;">
     <input
       type="text"
@@ -86,7 +86,7 @@
       <i class="bi bi-search"></i>
     </button>
   </div>
-</form>
+</form> -->
 
       <div class="title-wrapper">
         <h1>Gallery Foto</h1>

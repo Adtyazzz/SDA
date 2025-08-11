@@ -102,25 +102,29 @@
     <section id="gallery" class="gallery section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-          {% for kegiatan_fisik in foto_kegiatan %}
+           {% for data_video in video_kegiatan %}
             <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
-              <div class="gallery-card">
+            <div class="gallery-card">
                 <div class="gallery-img">
-                  <img src="{{ kegiatan_fisik.Foto_dokumentasi.url }}" class="img-fluid" alt="Gallery Image" loading="lazy">
-                  <div class="gallery-overlay">
+                <video class="img-fluid custom-video" controls preload="metadata">
+                <source src="{{ data_video.file_video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                <!-- <div class="play-button" onclick="this.previousElementSibling.play(); this.style.display='none';"></div> -->
+                <div class="gallery-overlay">
                     <div class="gallery-info">
-                      <h4>{{ kegiatan_fisik.nama_kegiatan }}</h4>
-                      <p>{{ kegiatan_fisik.uraian_singkat }}</p>
-                      <p>{{ kegiatan_fisik.tanggal_kegiatan }}</p>
-                      <a href="{{ kegiatan_fisik.Foto_dokumentasi.url }}" class="glightbox gallery-link" data-gallery="gallery-images">
-                        <i class="bi bi-plus-circle"></i>
-                      </a>
+                    <h4>{{ data_video.judul_video }}</h4>
+                    <p>{{ data_video.uraian_singkat }}</p>
+                    <p>{{ data_video.tanggal_kegiatan }}</p>
+                    <a href="{{ data_video.file_video.url }}" class="glightbox gallery-link" data-gallery="gallery-videos">
+                        <i class="bi bi-play-circle"></i>
+                    </a>
                     </div>
-                  </div>
                 </div>
-              </div>
+                </div>
             </div>
-          {% endfor %}
+            </div>
+        {% endfor %}
         </div>
 {% if foto_kegiatan.paginator.num_pages > 1 %}
 <nav aria-label="Page navigation">

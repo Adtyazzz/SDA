@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Gallery - MediTrust Bootstrap Template</title>
+  <title>{{ title }}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{% static 'halaman/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
   <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -47,7 +47,7 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
        <div class="navbar-brand d-flex align-items-center">
-          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+          <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
           <h1 class="sitename m-0">Portal Informasi SDA</h1>
         </div>
       </a>
@@ -67,33 +67,38 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active current">Gallery</li>
+            <li class="breadcrumb-item active current">Gallery video</li>
           </ol>
         </nav>
       </div>
 
+      <!-- <form method="GET" class="d-flex justify-content-center mb-4" role="search">
+  <div class="input-group" style="max-width: 400px;">
+    <input
+      type="text"
+      name="q"
+      class="form-control"
+      placeholder="Cari kegiatan..."
+      value="{{ request.GET.q|default:'' }}"
+    >
+    <button class="btn btn-primary" type="submit">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+</form> -->
+
       <div class="title-wrapper">
         <h1>Gallery Video</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
       </div>
     </div><!-- End Page Title -->
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-          <ul class="gallery-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-nature">Nature</li>
-            <li data-filter=".filter-architecture">Architecture</li>
-            <li data-filter=".filter-people">People</li>
-            <li data-filter=".filter-travel">Travel</li>
-          </ul><!-- End Gallery Filters -->
-
-                <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+    <!-- Kegiatan Fisik -->
+    <h2 class="mb-4">Dokumentasi Kegiatan Fisik</h2>
+    <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
         {% for data_video in video_kegiatan %}
             <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
             <div class="gallery-card">
@@ -107,6 +112,7 @@
                     <div class="gallery-info">
                     <h4>{{ data_video.judul_video }}</h4>
                     <p>{{ data_video.uraian_singkat }}</p>
+                    <p>{{ data_video.tanggal_kegiatan }}</p>
                     <a href="{{ data_video.file_video.url }}" class="glightbox gallery-link" data-gallery="gallery-videos">
                         <i class="bi bi-play-circle"></i>
                     </a>
@@ -116,13 +122,57 @@
             </div>
             </div>
         {% endfor %}
-        </div>
-<!-- End Gallery Container -->
-        </div>
 
-      </div>
+    <div class="text-end mt-3">
+      <a href="{% url 'kegiatan_fisik_video' %}">
+        <button type="button" class="btn btn-accent">Lihat Dokumentasi Lainnya</button>
+      </a>
+    </div>
 
-    </section><!-- /Gallery Section -->
+    <hr class="my-5">
+
+    <!-- Kegiatan Perencanaan -->
+    <h2 class="mb-4">Dokumentasi Kegiatan Perencanaan</h2>
+    <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+        {% for data_video in video_kegiatan_perencanaan %}
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-nature">
+            <div class="gallery-card">
+                <div class="gallery-img">
+                <video class="img-fluid custom-video" controls preload="metadata">
+                <source src="{{ data_video.file_video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                <!-- <div class="play-button" onclick="this.previousElementSibling.play(); this.style.display='none';"></div> -->
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                    <h4>{{ data_video.judul_video }}</h4>
+                    <p>{{ data_video.uraian_singkat }}</p>
+                    <p>{{ data_video.tanggal_kegiatan }}</p>
+                    <a href="{{ data_video.file_video.url }}" class="glightbox gallery-link" data-gallery="gallery-videos">
+                        <i class="bi bi-play-circle"></i>
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+
+    <div class="text-end mt-3">
+      <a href="{% url 'kegiatan_perencanaan_video' %}">
+        <button type="button" class="btn btn-accent">Lihat Dokumentasi Lainnya</button>
+      </a>
+    </div>
+
+    <!-- {% if foto_kegiatan|length == 0 %}
+    <div class="col-12 text-center mt-5">
+      <p>Tidak ada kegiatan ditemukan.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section> -->
+<!-- /Gallery Section -->
 
   </main>
 

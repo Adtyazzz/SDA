@@ -6122,6 +6122,53 @@ section,
   pointer-events: none; /* tidak bisa diklik ulang */
 }
 
+/* --- Responsive navmenu --- */
+@media (max-width: 991px) {
+  .navmenu {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    padding: 1rem;
+    position: absolute;
+    top: 70px; /* sesuaikan dengan tinggi header kamu */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .navmenu.navmenu-active {
+    display: flex;
+  }
+
+  .navmenu ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navmenu ul li {
+    width: 100%;
+  }
+
+  .navmenu ul li a {
+    width: 100%;
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  .navmenu .dropdown > ul {
+    display: none;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid #ddd;
+  }
+
+  .navmenu .dropdown.active > ul {
+    display: block;
+  }
+}
+
+
 
 }
 

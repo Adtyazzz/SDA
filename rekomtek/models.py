@@ -7,6 +7,9 @@ class Layanan(models.Model):
 
     def __str__(self):
         return self.nama_layanan
+    
+    class Meta:
+        verbose_name_plural = '1. Layanan'
 
 class RekomendasiTeknis(models.Model):
     layanan = models.ForeignKey(Layanan, on_delete=models.CASCADE)
@@ -29,6 +32,10 @@ class RekomendasiTeknis(models.Model):
     def __str__(self):
         return self.nama_pemohon
     
+    class Meta:
+        verbose_name_plural = '2. Rekomendasi Teknis'
+    
+    
 class StatusRekomendasiTeknis(models.Model):
     rekomtek = models.ForeignKey(RekomendasiTeknis, on_delete=models.CASCADE, related_name='status_rekomtek')
     jadwal_kunjungan_lapangan = models.DateField(blank=True, null=True)
@@ -37,5 +44,8 @@ class StatusRekomendasiTeknis(models.Model):
 
     def __str__(self):
         return self.rekomtek.nama_pemohon  # Menampilkan nama_pemohon dari relasi
+    
+    class Meta:
+        verbose_name_plural = '3. Status Rekomendasi Teknis'
 
     

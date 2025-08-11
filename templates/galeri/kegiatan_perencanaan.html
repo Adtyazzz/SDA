@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Gallery - MediTrust Bootstrap Template</title>
+  <title>{{ title }}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{% static 'halaman/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
   <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -47,7 +47,7 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
        <div class="navbar-brand d-flex align-items-center">
-          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+          <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
           <h1 class="sitename m-0">Portal Informasi SDA</h1>
         </div>
       </a>
@@ -68,25 +68,35 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'foto' %}">Galeri</a></li>
-            <li class="breadcrumb-item active current">Kegiatan Fisik</li>
+            <li class="breadcrumb-item active current">Kegiatan Perencanaan</li>
           </ol>
         </nav>
       </div>
 
-      <form method="GET" class="d-flex justify-content-center mb-4" role="search">
-  <div class="input-group" style="max-width: 400px;">
-    <input
-      type="text"
-      name="q"
-      class="form-control"
-      placeholder="Cari kegiatan..."
-      value="{{ request.GET.q|default:'' }}"
-    >
-    <button class="btn btn-primary" type="submit">
-      <i class="bi bi-search"></i>
+      <form method="GET" class="d-flex justify-content-center mb-5" role="search">
+  <div class="input-group shadow rounded-pill" style="max-width: 500px; overflow: hidden;">
+    <input type="text" name="q" class="form-control border-0 ps-4 py-2" placeholder="🔍 Cari kegiatan fisik..." value="{{ request.GET.q|default:'' }}" style="background-color: #f8f9fa;">
+    <button class="btn btn-accent rounded-end-pill px-4" type="submit">
+      Cari
     </button>
   </div>
 </form>
+       <div class="text-center mb-4 d-flex flex-wrap justify-content-center gap-2">
+        <!-- Tombol SEMUA -->
+        <a href="?kategori=all{% if query %}&q={{ query }}{% endif %}"
+           class="btn btn-album {% if not selected_kategori_id %}active{% endif %}">
+            Semua
+        </a>
+
+        <!-- Tombol kategori -->
+        {% for kategori in kategori_list %}
+          <a href="?kategori={{ kategori.id }}{% if query %}&q={{ query }}{% endif %}"
+             class="btn btn-album {% if selected_kategori_id == kategori.id|stringformat:'s' %}active{% endif %}">
+              {{ kategori.nama_kategori }}
+          </a>
+        {% endfor %}
+      </div>
+
 
       <div class="title-wrapper">
         <h1>Galeri Foto Kegiatan Perencanaan</h1>
@@ -108,6 +118,7 @@
               <div class="gallery-info">
                 <h4>{{ data_kegiatan.nama_kegiatan }}</h4>
                 <p>{{ data_kegiatan.uraian_singkat }}</p>
+                <p>{{ data_kegiatan.tanggal_kegiatan }}</p>
                 <a href="{{ data_kegiatan.Foto_dokumentasi.url }}" class="glightbox gallery-link" data-gallery="gallery-images">
                   <i class="bi bi-plus-circle"></i>
                 </a>
@@ -118,6 +129,36 @@
       </div>
       {% endfor %}
     </div>
+    <nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center mt-4">
+
+    {% if foto_kegiatan_perencanaan.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1{% if selected_kategori_id %}&kategori={{ selected_kategori_id }}{% endif %}{% if query %}&q={{ query }}{% endif %}">&laquo;</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ foto_kegiatan_perencanaan.previous_page_number }}{% if selected_kategori_id %}&kategori={{ selected_kategori_id }}{% endif %}{% if query %}&q={{ query }}{% endif %}">Sebelumnya</a>
+      </li>
+    {% endif %}
+
+    <li class="page-item disabled">
+      <span class="page-link">Halaman {{ foto_kegiatan_perencanaan.number }} dari {{ foto_kegiatan_perencanaan.paginator.num_pages }}</span>
+    </li>
+
+    {% if foto_kegiatan_perencanaan.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ foto_kegiatan_perencanaan.next_page_number }}{% if selected_kategori_id %}&kategori={{ selected_kategori_id }}{% endif %}{% if query %}&q={{ query }}{% endif %}">Selanjutnya</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ foto_kegiatan_perencanaan.paginator.num_pages }}{% if selected_kategori_id %}&kategori={{ selected_kategori_id }}{% endif %}{% if query %}&q={{ query }}{% endif %}">&raquo;</a>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>
+
+
+    
 
     <!-- Kegiatan Perencanaan -->
 

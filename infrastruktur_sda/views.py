@@ -46,7 +46,7 @@ def infrastruktur(request):
         
     data_kategori = KategoriInfrastrukturSda.objects.all()
     context = {
-        'title':'ini daftar infrastruktur',
+        'title':'daftar infrastruktur',
         'infrastruktur': infrastruktur,
         'kategori':data_kategori
     }

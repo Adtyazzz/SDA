@@ -51,7 +51,7 @@
         
 
        <div class="navbar-brand d-flex align-items-center">
-            <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
             <h1 class="sitename m-0">Portal Informasi SDA</h1>
           </div>
       </a>
@@ -87,22 +87,14 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery section">
 
-      <div class="container my-4">
-  <form method="GET" class="d-flex justify-content-center" role="search">
-    <div class="input-group" style="max-width: 500px;">
-      <input
-        type="text"
-        name="q"
-        class="form-control"
-        placeholder="Cari berita..."
-        value="{{ query|default:'' }}"
-      >
-      <button class="btn btn-primary" type="submit">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </form>
-</div>
+      <form method="GET" class="d-flex justify-content-center mb-5" role="search">
+  <div class="input-group shadow rounded-pill" style="max-width: 500px; overflow: hidden;">
+    <input type="text" name="q" class="form-control border-0 ps-4 py-2" placeholder="🔍 Cari Berita..." value="{{ request.GET.q|default:'' }}" style="background-color: #f8f9fa;">
+    <button class="btn btn-accent rounded-end-pill px-4" type="submit">
+      Cari
+    </button>
+  </div>
+</form>
 
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
