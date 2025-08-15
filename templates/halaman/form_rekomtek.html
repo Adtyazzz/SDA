@@ -1,134 +1,289 @@
 {% load widget_tweaks %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Form Rekomendasi Teknis</title>
+  <title>Form Permohonan Izin SDA</title>
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <style>
-    body {
-      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
-      min-height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .form-container {
-      max-width: 800px;
-      margin: 120px auto 40px auto;
-    }
-    .card {
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .card-header {
-      background-color: #007bff;
-      color: white;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      padding: 20px 30px;
-    }
-    .form-label i {
-      color: #007bff;
-      margin-right: 8px;
-    }
-    .form-control:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-    }
-    .btn-custom {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-    .btn-custom:hover {
-      background-color: #0056b3;
-    }
-    .btn-secondary {
-      transition: background-color 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background-color: #6c757d;
-    }
-    .logo {
-      height: 50px;
-      width: auto;
-    }
-    .header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
+    body { background: linear-gradient(135deg, #f9f9f9, #eef5ff); min-height: 100vh; font-family: 'Segoe UI', sans-serif; }
+    .form-container { max-width: 1100px; margin: 120px auto 40px auto; }
+    .card { border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: none; }
+    .card-header { background: linear-gradient(90deg, #007bff, #0056b3); color: white; border-radius: 15px 15px 0 0; padding: 20px 30px; }
+    .form-label { font-weight: 500; }
+    .form-label i { color: #007bff; margin-right: 8px; }
+    .form-control:focus { border-color: #007bff; box-shadow: 0 0 0 0.2rem rgba(0,123,255,.2); }
+    .btn-custom { background-color: #007bff; color: white; padding: 10px 22px; font-size: 16px; border-radius: 8px; transition: all 0.2s ease; }
+    .btn-custom:hover { background-color: #0056b3; }
+    .logo { height: 50px; }
+    .header { position: fixed; top: 0; width: 100%; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+    .intake-form { background: #ffffff; border: 1px solid #e3e6f0; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+    .intake-header { font-weight: 600; color: #007bff; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
   </style>
 </head>
-<body class="index-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center">
-    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4">
-      <a href="/" class="d-flex align-items-center text-decoration-none">
-        <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="logo me-2">
-        <span class="fw-bold text-dark fs-5">Rekomendasi Teknis SDA</span>
-      </a>
+<header id="header" class="header d-flex align-items-center">
+  <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4">
+    <a href="/" class="d-flex align-items-center text-decoration-none">
+      <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="logo me-2">
+      <span class="fw-bold text-dark fs-5">Rekomendasi Teknis SDA</span>
+    </a>
+  </div>
+</header>
+
+<div class="container form-container">
+  <div class="card">
+    <div class="card-header d-flex align-items-center">
+      <i class="fas fa-file-signature fa-lg me-2"></i>
+      <h4 class="mb-0">Form Permohonan Izin SDA</h4>
     </div>
-  </header>
+    <div class="card-body p-4">
 
-  <div class="container form-container">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <i class="fas fa-file-signature fa-lg me-2"></i>
-        <h4 class="mb-0">Form Rekomendasi Teknis</h4>
-      </div>
-      <div class="card-body p-4">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
 
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endfor %}
-        {% endif %}
+      <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
 
-        <form method="post" enctype="multipart/form-data" novalidate>
-          {% csrf_token %}
-          {% for field in form %}
-            {% if field.label not in "Tanggal permohonan Jadwal kunjungan lapangan Tanggal kunjungan lapangan 1 Tanggal kunjungan lapangan 2" %}
-              <div class="mb-3">
+        <!-- Field teks -->
+        <div class="row">
+          {% for field in form.visible_fields %}
+            {% if not field.field.widget.input_type == "file" %}
+              <div class="col-md-6 mb-3">
                 <label for="{{ field.id_for_label }}" class="form-label">
-                  <i class="fas fa-circle-dot"></i> {{ field.label }}
+                  <i class="fas fa-circle-dot"></i>
+                  {% if field.name == "nama_pemohon" %}Nama Pemohon
+                  {% elif field.name == "kontak_pemohon" %}Kontak Pemohon
+                  {% elif field.name == "email_pemohon" %}Email Pemohon
+                  {% elif field.name == "jenis_layanan" %}Jenis Layanan
+                  {% elif field.name == "nama_perusahaan" %}Nama Perusahaan
+                  {% elif field.name == "nama_direktur" %}Nama Direktur
+                  {% elif field.name == "alamat_perusahaan" %}Alamat Perusahaan
+                  {% else %}{{ field.label }}
+                  {% endif %}
                 </label>
                 {{ field|add_class:"form-control" }}
-                {% if field.help_text %}
-                  <div class="form-text">{{ field.help_text }}</div>
-                {% endif %}
                 {% for error in field.errors %}
                   <div class="text-danger small">{{ error }}</div>
                 {% endfor %}
               </div>
             {% endif %}
           {% endfor %}
+        </div>
 
-          <div class="d-flex justify-content-between mt-4">
-            <a href="javascript:history.back()" class="btn btn-secondary">
-              <i class="fas fa-arrow-left"></i> Kembali
-            </a>
-            <button type="submit" class="btn btn-custom">
-              <i class="fas fa-paper-plane"></i> Kirim Usulan
-            </button>
-          </div>
-        </form>
-      </div>
+        <hr class="my-4">
+
+        <!-- Intake -->
+        <h5 class="mb-3"><i class="bi bi-diagram-3"></i> Data Intake</h5>
+        {{ intake_formset.management_form }}
+        <div id="intake-forms">
+          {% for intake_form in intake_formset %}
+            <div class="intake-form">
+              <div class="intake-header">
+                <span>Intake {{ forloop.counter }}</span>
+                <button type="button" class="btn btn-danger btn-sm remove-intake">
+                  <i class="fas fa-trash"></i> Hapus Intake
+                </button>
+              </div>
+              <div class="row">
+                {% for field in intake_form.visible_fields %}
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                      {% if field.name == "sumber_air" %}Sumber Air
+                      {% elif field.name == "lokasi_pengambilan" %}Lokasi Pengambilan
+                      {% elif field.name == "kelurahan" %}Kelurahan / Desa
+                      {% elif field.name == "kecamatan" %}Kecamatan
+                      {% elif field.name == "kabupaten" %}Kabupaten / Kota
+                      {% elif field.name == "provinsi" %}Provinsi
+                      {% elif field.name == "koordinat" %}Titik Koordinat
+                      {% elif field.name == "tujuan_pemanfaatan" %}Tujuan Pemanfaatan
+                      {% elif field.name == "cara_pengambilan_air" %}Cara Pengambilan Air
+                      {% elif field.name == "cara_pembuangan_air" %}Cara Pembuangan Air
+                      {% elif field.name == "volume_pengambilan" %}Volume Pengambilan (Liter/Detik)
+                      {% elif field.name == "lama_waktu_pengambilan" %}Lama Waktu Pengambilan Air (Jam/Hari)
+                      {% elif field.name == "jenis_pompa" %}Jenis Pompa/Merek Pompa
+                      {% elif field.name == "kapasitas_pompa" %}Kapasitas Pompa (Liter/Detik)
+                      {% elif field.name == "upload_name_plate" %}Upload Name Plate Pompa
+                      {% else %}{{ field.label }}
+                      {% endif %}
+                    </label>
+                    {{ field|add_class:"form-control" }}
+                    {% for error in field.errors %}
+                      <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <button type="button" class="btn btn-success mb-3" id="add-intake">
+          <i class="fas fa-plus"></i> Tambah Intake
+        </button>
+
+        <hr class="my-4">
+
+        <!-- Upload Dokumen -->
+        <h5><i class="fas fa-upload"></i> Upload Dokumen</h5>
+        <div class="row">
+          {% for field in form.visible_fields %}
+            {% if field.field.widget.input_type == "file" %}
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">
+                  {% if field.name == "dok_gambar_desain" %}
+                    Gambar detail desain, spektek, jadwal dan metode pelaksanaan
+                  {% elif field.name == "dok_izin_lingkungan" %}
+                    Izin lingkungan (rekomendasi AMDAL/UKL-UPL/SPPL)
+                  {% elif field.name == "dok_berita_acara" %}
+                    Berita acara pertemuan konsultasi masyarakat (Hasil konsultasi publik)
+                  {% elif field.name == "dok_jenis_prasarana" %}
+                    Jenis prasarana dan teknologi yang akan digunakan (dokumentasi pompa, intake, WTP, flowmeter)
+                  {% elif field.name == "dok_kepemilikan_lahan" %}
+                    Dokumen kepemilikan/penguasaan/perjanjian lahan yang akan digunakan
+                  {% elif field.name == "dok_perizinan_usaha" %}
+                    Perizinan berusaha yang telah dimiliki pemohon sesuai dengan kegiatan usaha
+                  {% elif field.name == "dok_proposal_teknis" %}
+                    Proposal teknis
+                  {% elif field.name == "dok_rencana_operasi" %}
+                    Rencana operasi dan pemeliharaan pada sumber air
+                  {% elif field.name == "dok_surat_permohonan" %}
+                    Surat permohonan izin pengusahaan sumber daya air
+                  {% else %}
+                    {{ field.label }}
+                  {% endif %}
+                </label>
+                {{ field|add_class:"form-control" }}
+                <small class="text-muted">Format: PDF (Maks. 5MB)</small>
+                {% for error in field.errors %}
+                  <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <a href="javascript:history.back()" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali
+          </a>
+<!-- Tombol Kirim Usulan -->
+<button type="button" id="btnKirim" class="btn btn-custom">
+    <i class="fas fa-paper-plane"></i> Kirim Usulan
+</button>
+
+<!-- Script Konfirmasi -->
+<script>
+document.getElementById("btnKirim").addEventListener("click", function() {
+    Swal.fire({
+        title: 'Yakin mengirim usulan?',
+        text: "Pastikan semua data sudah benar.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, kirim!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector("form").submit(); // submit form
+        }
+    });
+});
+</script>
+
+        </div>
+      </form>
+
     </div>
   </div>
+</div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let formContainer = document.getElementById('intake-forms');
+  let addButton = document.getElementById('add-intake');
+  let totalForms = document.getElementById('id_intake-TOTAL_FORMS');
 
+  addButton.addEventListener('click', function() {
+    let currentFormCount = parseInt(totalForms.value);
+    let newForm = formContainer.querySelector('.intake-form').cloneNode(true);
+
+    newForm.innerHTML = newForm.innerHTML.replace(
+      new RegExp(`intake-(\\d+)-`, 'g'),
+      `intake-${currentFormCount}-`
+    );
+
+    newForm.querySelectorAll('input, select, textarea').forEach(function(input) {
+      input.value = '';
+    });
+
+    newForm.querySelector('.intake-header span').textContent = `Intake ${currentFormCount + 1}`;
+
+    formContainer.appendChild(newForm);
+    totalForms.value = currentFormCount + 1;
+  });
+
+  formContainer.addEventListener('click', function(e) {
+    if (e.target.closest('.remove-intake')) {
+      let forms = formContainer.querySelectorAll('.intake-form');
+      if (forms.length > 1) {
+        e.target.closest('.intake-form').remove();
+        totalForms.value = forms.length - 1;
+      } else {
+        alert('Minimal harus ada satu intake.');
+      }
+    }
+  });
+});
+</script>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const layananSelect = document.getElementById('id_layanan');
+  
+  // Target header, form intake, dan tombol
+  const intakeHeader = document.querySelector('h5.mb-3'); // ganti selector sesuai header
+  const intakeForms = document.getElementById('intake-forms');
+  const addIntakeBtn = document.getElementById('add-intake');
+
+  const layananButuhIntake = [
+    'Rekomendasi Teknis Izin Pengusahaan Sumber Daya Air',
+    'Rekomendasi Teknis Izin Penggunaan Sumber Daya Air'
+  ];
+
+  function toggleIntake() {
+    const selectedText = layananSelect.options[layananSelect.selectedIndex]?.text.trim();
+
+    if (layananButuhIntake.includes(selectedText)) {
+      if (intakeHeader) intakeHeader.style.display = 'block';
+      if (intakeForms) intakeForms.style.display = 'block';
+      if (addIntakeBtn) addIntakeBtn.style.display = 'inline-block';
+    } else {
+      if (intakeHeader) intakeHeader.style.display = 'none';
+      if (intakeForms) intakeForms.style.display = 'none';
+      if (addIntakeBtn) addIntakeBtn.style.display = 'none';
+    }
+  }
+
+  toggleIntake();
+  layananSelect.addEventListener('change', toggleIntake);
+});
+</script>
+
+
 </html>
