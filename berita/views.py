@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
 from berita.models import Kategori, Artikel
 
+
+
 # Create your views here.
-def dashboard(request):
-    template_name = 'dashboard/index.html'
-    context = {
-        'title':'ini dashboard',
-    }
-    return render(request, template_name, context)
+
 
 def Kategori_list(request):
     template_name = 'dashboard/snippets/kategori_list.html'

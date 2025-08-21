@@ -57,11 +57,15 @@
 
     {% include 'halaman/navbar.html' %}
      
-    {% if user.is_authenticated %} 
-      <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-    {% else %}
-      <a href="{% url 'akun_login' %}">LOGIN</a>
-    {% endif %}  
+    {% if user.is_authenticated %}
+  {% if user.is_staff or user.is_superuser %}
+    <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+  {% else %}
+    <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+  {% endif %}
+{% else %}
+  <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+{% endif %}
 
     </div>
   </header>
@@ -81,30 +85,12 @@
               <div class="row">
                 <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
                   <div class="content-box">
-                    <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Leading Healthcare Specialists</span>
                     <h1 data-aos="fade-up" data-aos-delay="200">Dinas PU SDA — Melayani, Membangun, dan Mengelola Air untuk Masa Depan </h1>
-                    <p data-aos="fade-up" data-aos-delay="250">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <p data-aos="fade-up" data-aos-delay="250">Portal Informasi SDA sebagai pusat informasi dan layanan dalam pengelolaan sumber daya air. Kami berkomitmen menyediakan data, publikasi, serta layanan publik , dan mudah diakses</p>
 
                     <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
-                      <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
-                      <a href="services.html" class="btn btn-outline">Explore Services</a>
-                    </div>
-
-                    <div class="info-badges" data-aos="fade-up" data-aos-delay="350">
-                      <div class="badge-item">
-                        <i class="bi bi-telephone-fill"></i>
-                        <div class="badge-content">
-                          <span>Emergency Line</span>
-                          <strong>+1 (555) 987-6543</strong>
-                        </div>
-                      </div>
-                      <div class="badge-item">
-                        <i class="bi bi-clock-fill"></i>
-                        <div class="badge-content">
-                          <span>Working Hours</span>
-                          <strong>Mon-Fri: 7.30 WITA-16.00 WITA</strong>
-                        </div>
-                      </div>
+                      <a href="{% url 'infrastruktur_sda' %}" class="btn btn-primary">Infrastruktur SDA</a>
+                      <a href="services.html" class="btn btn-outline">Peta Daerah Irigasi</a>
                     </div>
                   </div>
                 </div>
@@ -114,25 +100,27 @@
                 <div class="row gy-4">
 
                   <div class="col-lg-4">
+                    <a href="{% url 'tkpsda' %}">
                     <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
                       <div class="feature-icon">
-                        <i class="bi bi-heart-pulse-fill"></i>
+                        <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="feature-text">
-                        <h3>Cardiology</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>TKPSDA</h3>
+                        <p>Wadah koordinasi dan sinkronisasi kebijakan sumber daya air</p>
                       </div>
                     </div>
+                  </a>
                   </div>
 
                   <div class="col-lg-4">
                     <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
                       <div class="feature-icon">
-                        <i class="bi bi-lungs-fill"></i>
+                        <i class="bi bi-droplet-fill"></i></i>
                       </div>
                       <div class="feature-text">
-                        <h3>Pulmonology</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Dewan Sumbe Daya Air</h3>
+                        <p>Forum pertimbangan dan rekomendasi kebijakan sumber daya air</p>
                       </div>
                     </div>
                   </div>
@@ -140,11 +128,11 @@
                   <div class="col-lg-4">
                     <div class="feature-item" data-aos="fade-up" data-aos-delay="550">
                       <div class="feature-icon">
-                        <i class="bi bi-capsule"></i>
+                        <i class="bi bi-tree-fill"></i>
                       </div>
                       <div class="feature-text">
-                        <h3>Diagnostics</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>KOMISI IRIGASI</h3>
+                        <p>Lembaga koordinasi dalam pengelolaan jaringan irigasi</p>
                       </div>
                     </div>
                   </div>
@@ -157,36 +145,34 @@
         </div>
       </div>
     </section><!-- /Hero Section -->
-
+    
     <!-- Home About Section -->
     <section id="home-about" class="home-about section">
-
+      
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+        
         <div class="row gy-5 align-items-center">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
             <div class="about-image">
               <img src="{% static 'halaman/assets/img/yuhu.webp' %}" alt="Modern Healthcare Facility" class="img-fluid rounded-3 mb-4">
-              <div class="experience-badge bg-transparent" style="background-color: transparent; box-shadow: none;">
-                <span class="years"><img src="https://images.seeklogo.com/logo-png/35/1/pu-logo-png_seeklogo-355609.png" alt="Logo" style="height:60px;"></span>
-              </div>
             </div>
           </div>
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="cta-wrapper mt-4">
+              <a href="about.html" class="btn btn-primary">Profil SDA</a>
+            </div>
             <div class="about-content">
-              <h2>Direktorat Jenderal Sumber Daya Air</h2>
-              <p class="lead" style="text-align: justify;">Direktorat Jenderal Sumber Daya Air mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang pengelolaan sumber daya air sesuai dengan ketentuan peraturan perudang-undangan.</p>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat magna eu accumsan mattis. Duis non augue in tortor facilisis tincidunt ac sit amet sapien. Suspendisse id risus non nisi sodales condimentum.</p>
+              <h2>Bidang Sumber Daya Air</h2>
+              <p class="lead" style="text-align: justify;">Bidang Sumber Daya Air mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang pengelolaan sumber daya air sesuai dengan ketentuan peraturan perudang-undangan.</p>
 
               <div class="row g-4 mt-4">
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                   <div class="feature-item">
                     <div class="icon">
-                      <i class="bi bi-heart-pulse"></i>
+                      <i class="bi bi-journal-text"></i>
                     </div>
-                    <h4>Compassionate Care</h4>
+                    <h4>Renstra SDA</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                   </div>
                 </div>
@@ -194,18 +180,14 @@
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                   <div class="feature-item">
                     <div class="icon">
-                      <i class="bi bi-star"></i>
+                      <i class="bi bi-clipboard-data"></i>
                     </div>
-                    <h4>Medical Excellence</h4>
+                    <h4>laporan kinerja DPUPRPEA KALTIM 2024</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                   </div>
                 </div>
               </div>
 
-              <div class="cta-wrapper mt-4">
-                <a href="about.html" class="btn btn-primary">Learn More About Us</a>
-                <a href="#" class="btn btn-outline">Meet Our Team</a>
-              </div>
             </div>
           </div>
         </div>

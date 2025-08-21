@@ -1,13 +1,14 @@
 from django.urls import path
-from berita.views import dashboard, Kategori_list, kategori_add, kategori_update, kategori_delete
+from berita.views import  Kategori_list, kategori_add, kategori_update, kategori_delete
 
 
 urlpatterns = [
-    path("", dashboard, name='dashboard'),
+    
     path("kategori/list", Kategori_list, name='kategori_list'),
     path("kategori/add", kategori_add, name='kategori_add'),
     path("kategori/update/<int:id_kategori>", kategori_update, name='kategori_update'),
     path("kategori/delete/<int:id_kategori>", kategori_delete, name='kategori_delete'),
+    
 ]
 
     

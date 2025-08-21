@@ -148,6 +148,6 @@ class LayananAdmin(admin.ModelAdmin):
 
 @admin.register(StatusRekomendasiTeknis)
 class StatusRekomendasiTeknisAdmin(admin.ModelAdmin):
-    list_display = ['rekomtek', 'jadwal_kunjungan_lapangan', 'tanggal_kunjungan_lapangan_1', 'tanggal_kunjungan_lapangan_2']
+    list_display = ['rekomtek', 'jadwal_kunjungan_lapangan', 'tanggal_kunjungan_lapangan_1', 'tanggal_kunjungan_lapangan_2', 'tanggal_kirim']
     list_filter = ['jadwal_kunjungan_lapangan']
     search_fields = ['rekomtek__nama_pemohon', 'rekomtek__nama_perusahaan']

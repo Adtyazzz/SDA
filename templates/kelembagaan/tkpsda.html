@@ -55,11 +55,16 @@
 
     {% include 'halaman/navbar.html' %}
 
-      {% if user.is_authenticated %} 
-      <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-    {% else %}
-      <a href="{% url 'akun_login' %}">LOGIN</a>
-    {% endif %}  
+      {% if user.is_authenticated %}
+  {% if user.is_staff or user.is_superuser %}
+    <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+  {% else %}
+    <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+  {% endif %}
+{% else %}
+  <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+{% endif %}
+
     </div>
   </header>
 

@@ -71,14 +71,29 @@ class Intake(models.Model):
 
 
 class StatusRekomendasiTeknis(models.Model):
+    STATUS_CHOICES = [
+        ('proses', 'Sedang Diproses'),
+        ('diterima', 'Diterima'),
+        ('ditolak', 'Ditolak'),
+    ]
+
     rekomtek = models.ForeignKey(RekomendasiTeknis, on_delete=models.CASCADE, related_name='status_rekomtek', null=True, blank=True)
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES, 
+        default='proses'
+    )
+
+    keterangan = models.TextField(blank=True, null=True)  # isi kalau ditolak
     jadwal_kunjungan_lapangan = models.DateField(blank=True, null=True)
     tanggal_kunjungan_lapangan_1 = models.DateField(blank=True, null=True)
     tanggal_kunjungan_lapangan_2 = models.DateField(blank=True, null=True)
+    tanggal_kirim = models.DateField(auto_now=True)
 
     def __str__(self):
-        return (self.rekomtek.nama_pemohon if self.rekomtek and self.rekomtek.nama_pemohon else "Tanpa Rekomtek")
+        if self.rekomtek:
+            return f"{self.rekomtek.nama_pemohon} - {self.status}"
+        return "Tanpa Rekomtek"
 
-    
     class Meta:
         verbose_name_plural = '3. Status Rekomendasi Teknis'

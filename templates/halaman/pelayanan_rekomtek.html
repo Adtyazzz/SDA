@@ -55,11 +55,16 @@
       {% include 'halaman/navbar.html' %}
 
 
-      {% if user.is_authenticated %} 
-      <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-    {% else %}
-      <a href="{% url 'akun_login' %}">LOGIN</a>
-    {% endif %}  
+      {% if user.is_authenticated %}
+  {% if user.is_staff or user.is_superuser %}
+    <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+  {% else %}
+    <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+  {% endif %}
+{% else %}
+  <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+{% endif %} 
+
     </div>
   </header>
   <main class="main">
@@ -101,8 +106,8 @@
               </ul>
 
               <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-                <a href="{% url 'form_rekomtek' %}" class="btn-secondary">Ajukan Permohonan</a>
-                <a href="{% url 'status_permohonan' %}" class="btn-primary">Status Permohonan</a>
+                <a href="{% url 'form_permohonan_dashboard' %}" class="btn-secondary">Ajukan Permohonan</a>
+                <a href="{% url 'status_permohonann' %}" class="btn-primary">Status Permohonan</a>
               </div>
             </div>
           </div>

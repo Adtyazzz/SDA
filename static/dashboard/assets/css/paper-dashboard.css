@@ -16756,6 +16756,16 @@ img {
     width: 38%;
     padding: 15px;
   }
+
+
+  /* custom.css */
+.logo-icon {
+  width: 16px;   /* sama dengan ukuran icon fa-heart */
+  height: 16px;
+  vertical-align: middle; /* biar sejajar sama teks */
+  margin: 0 3px; /* kasih jarak kiri kanan */
+}
+
 }
 
 /*# sourceMappingURL=dashboard-pro.css.map */

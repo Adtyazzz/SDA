@@ -3,11 +3,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+
 def akun_login(request):
-    # jika user sudah login maka tidak boleh akses fungsi ini lagi
     if request.user.is_authenticated:
-        return redirect('/')
-    
+        # kalau user sudah login langsung redirect sesuai role
+        if request.user.is_staff or request.user.is_superuser:
+            return redirect('/admin/')
+        else:
+            return redirect('/dashboard/')
 
     template_name = "halaman/login.html"
     pesan = ''
@@ -18,13 +23,20 @@ def akun_login(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('/')
+
+            # cek role
+            if user.is_staff or user.is_superuser:
+                return redirect('/admin/')
+            else:
+                return redirect('/dashboard/')
         else:
             pesan = "username atau password salah"
+
     context = {
         'pesan': pesan
     }
     return render(request, template_name, context)
+
 
 def akun_registrasi(request):
     if request.user.is_authenticated:
@@ -70,4 +82,4 @@ def akun_registrasi(request):
 
 def akun_logout(request):
     logout(request)
-    return redirect('/')
+    return redirect('akun_login')

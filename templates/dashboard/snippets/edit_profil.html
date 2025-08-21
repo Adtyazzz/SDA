@@ -1,0 +1,180 @@
+{% extends "dashboard/base.html" %}
+{% load widget_tweaks static %}
+
+{% block content %}
+<div class="content">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card-user shadow-lg border-0 rounded-3">
+        <!-- Cover / Background -->
+        <div class="image">
+          <img src="{% static 'dashboard/assets/img/bg/damir-bosnjak.jpg' %}" 
+               alt="Background" 
+               class="img-fluid rounded-top">
+        </div>
+
+        <div class="card-body">
+
+          <!-- Messages Section -->
+          {% if messages %}
+            <div id="django-messages" class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible shadow-lg rounded-3 mb-2 toast-message" role="alert">
+                  <i class="bi 
+                    {% if message.tags == 'success' %}bi-check-circle-fill text-success{% endif %}
+                    {% if message.tags == 'error' or message.tags == 'danger' %}bi-x-circle-fill text-danger{% endif %}
+                    {% if message.tags == 'warning' %}bi-exclamation-triangle-fill text-warning{% endif %}
+                    {% if message.tags == 'info' %}bi-info-circle-fill text-info{% endif %}
+                  "></i>
+                  <span class="ms-2">{{ message }}</span>
+                </div>
+              {% endfor %}
+            </div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const alerts = document.querySelectorAll('#django-messages .alert');
+                alerts.forEach((alert, i) => {
+                  // delay masuk
+                  setTimeout(() => {
+                    alert.classList.add("show-toast");
+                  }, 200 + (i * 200));
+
+                  // auto hide
+                  setTimeout(() => {
+                    alert.classList.remove("show-toast");
+                    alert.classList.add("hide-toast");
+                    setTimeout(() => alert.remove(), 500);
+                  }, 4000 + (i * 1000));
+                });
+              });
+            </script>
+          {% endif %}
+
+          <!-- Profile Info -->
+          <div class="author text-center mb-4">
+            <div class="position-relative d-inline-block">
+              {% if profil.avatar %}
+                <img id="preview-avatar"
+                     class="avatar border-gray rounded-circle shadow-sm" 
+                     src="{{ profil.avatar.url }}" 
+                     alt="Profile" width="120" height="120">
+              {% else %}
+                <img id="preview-avatar"
+                     class="avatar border-gray rounded-circle shadow-sm" 
+                     src="{% static 'dashboard/assets/img/no_profil.jpeg' %}" 
+                     alt="Profile" width="120" height="120">
+              {% endif %}
+              
+              <!-- Ikon kecil di pojok kanan bawah -->
+              <label for="id_avatar" 
+              class="btn-edit-avatar position-absolute rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-camera-fill fs-6"></i>
+              </label>
+            </div>
+            <h5 class="title mb-0">{{ user.username }}</h5>
+            <p class="description text-muted mb-0">@{{ user.first_name }} {{ user.last_name }}</p>
+          </div>
+
+          <!-- Edit Profile Form -->
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Username</label>
+                {% render_field user_form.username class="form-control shadow-sm" %}
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Email address</label>
+                {% render_field user_form.email class="form-control shadow-sm" %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">First Name</label>
+                {% render_field user_form.first_name class="form-control shadow-sm" %}
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Last Name</label>
+                {% render_field user_form.last_name class="form-control shadow-sm" %}
+              </div>
+            </div>
+
+            <!-- hidden input avatar -->
+            <div class="d-none">
+              {% render_field foto_form.avatar %}
+            </div>
+
+            <!-- Tombol kanan bawah -->
+            <div class="text-end mt-3">
+              <button type="submit" class="btn btn-primary btn-sm shadow-sm px-4">
+                Save Changes
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script Preview Foto -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const inputFile = document.getElementById("id_avatar");
+    const previewImg = document.getElementById("preview-avatar");
+
+    if (inputFile) {
+      inputFile.addEventListener("change", function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            previewImg.src = e.target.result;
+          }
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Custom CSS -->
+<style>
+  /* Avatar edit button */
+  .btn-edit-avatar {
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: #f0f2f4;
+    color: #fff;
+    border: 2px solid #fff;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+  .btn-edit-avatar:hover {
+    background: #0b5ed7;
+    transform: scale(1.1);
+  }
+
+  /* Toast animation */
+  .toast-message {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+  }
+  .toast-message.show-toast {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .toast-message.hide-toast {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+</style>
+{% endblock %}

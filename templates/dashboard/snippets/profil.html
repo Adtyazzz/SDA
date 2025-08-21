@@ -1,0 +1,70 @@
+{% extends "dashboard/base.html" %}
+{% load widget_tweaks static %}
+
+{% block content %}
+<div class="content">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card-user shadow-lg border-0 rounded-3">
+        
+        <!-- Cover / Background -->
+        <div class="image">
+          <img src="{% static 'dashboard/assets/img/bg/damir-bosnjak.jpg' %}" 
+               alt="Background" 
+               class="img-fluid rounded-top">
+        </div>
+
+        <div class="card-body">
+          <!-- Profile Info -->
+          <div class="author text-center mb-4">
+            <div class="position-relative d-inline-block">
+              {% if profil.avatar %}
+                <img id="preview-avatar"
+                     class="avatar border-gray rounded-circle shadow-sm" 
+                     src="{{ profil.avatar.url }}" 
+                     alt="Profile" width="120" height="120">
+              {% else %}
+                <img id="preview-avatar"
+                     class="avatar border-gray rounded-circle shadow-sm" 
+                     src="{% static 'dashboard/assets/img/no_profil.jpeg' %}" 
+                     alt="Profile" width="120" height="120">
+              {% endif %}
+            </div>
+            <h5 class="title mb-0">{{ user.username }}</h5>
+            <p class="description text-muted mb-0">
+              @{{ user.first_name }} {{ user.last_name }}
+            </p>
+          </div>
+
+          <!-- Read Only Profile Data -->
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Username</label>
+                <input type="text" class="form-control shadow-sm" disabled value="{{ user.username }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Email address</label>
+                <input type="email" class="form-control shadow-sm" disabled value="{{ user.email }}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">First Name</label>
+                <input type="text" class="form-control shadow-sm" disabled value="{{ user.first_name }}">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Last Name</label>
+                <input type="text" class="form-control shadow-sm" disabled value="{{ user.last_name }}">
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
