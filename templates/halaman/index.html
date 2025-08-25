@@ -160,10 +160,10 @@
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="cta-wrapper mt-4">
+              <h2>Bidang Sumber Daya Air</h2>
               <a href="about.html" class="btn btn-primary">Profil SDA</a>
             </div>
             <div class="about-content">
-              <h2>Bidang Sumber Daya Air</h2>
               <p class="lead" style="text-align: justify;">Bidang Sumber Daya Air mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang pengelolaan sumber daya air sesuai dengan ketentuan peraturan perudang-undangan.</p>
 
               <div class="row g-4 mt-4">
@@ -194,13 +194,13 @@
 
         <div class="row mt-5 pt-4 certifications-row" data-aos="fade-up" data-aos-delay="600">
           <div class="col-12 text-center mb-4">
-            <h4 class="certification-title">Our Accreditations</h4>
+            <h4 class="certification-title">Aplikasi Bidang SDA</h4>
           </div>
           <div class="col-12">
             <div class="certifications">
               <div class="certification-item" data-aos="zoom-in" data-aos-delay="700">
-                <a href="https://sahabat.pu.go.id/" target="_blank">
-                <img src="{% static 'halaman/assets/img/clients/1.png' %}" alt="Certification">
+                <a href="https://siteman-irigasi.kaltimprov.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/siteman_irigasi.png' %}" alt="Certification">
                 </a>
               </div>
               <div class="certification-item" data-aos="zoom-in" data-aos-delay="800">
@@ -232,7 +232,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Berita Terkini</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Berita dan informasi terkini terkait kegiatan serta program Bidang Sumber Daya Air</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -243,18 +243,18 @@
             <div class="department-card">
               <div class="department-image">
                 {% if artikel.thumbnail %}
-                <a href="{% url 'artikel_detail' artikel.id %}"><img src="{{ artikel.thumbnail.url }}" alt="Cardiology Department" class="img-fluid"></a>
+                <a href="{% url 'artikel_detail' artikel.slug %}"><img src="{{ artikel.thumbnail.url }}" alt="Cardiology Department" class="img-fluid"></a>
                 {% else %}
-               <a href="{% url 'artikel_detail' artikel.id %}"><img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt=""></a>
+               <a href="{% url 'artikel_detail' artikel.slug %}"><img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt=""></a>
                 {% endif %}
               </div>
               <div class="department-content">
               <h6 class="category artikel-tanggal">{{ artikel.kategori }}</h6>
-              <h3><a href="{% url 'artikel_detail' artikel.id %}">{{ artikel.judul }}</a></h3>
+              <h3><a href="{% url 'artikel_detail' artikel.slug %}">{{ artikel.judul }}</a></h3>
               <p>{{ artikel.isi | safe | truncatechars:'300' }}</p>
 
               <!-- Tombol Learn More -->
-              <a href="{% url 'artikel_detail' artikel.id %}" class="btn-learn-more">
+              <a href="{% url 'artikel_detail' artikel.slug %}" class="btn-learn-more">
                 <span>Baca Selengkapnya</span>
                 <i class="fas fa-arrow-right"></i>
               </a>
@@ -265,7 +265,7 @@
                   <i class="fa fa-calendar"></i> {{ artikel.tgl_buat }}
                 </div>
                 <div class="artikel-tanggal">
-                  <i class="bi bi-eye"></i> {{ artikel.views }} pembaca
+                  <i class="bi bi-eye"></i> {{ artikel.views }} Dilihat
                 </div>
 
             </div>
@@ -288,8 +288,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Dokumentasi Kegiatan Bidang Sumber Daya Air</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -306,7 +305,7 @@
                 <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ foto.nama_kegiatan }}</h3>
                 <p>{{ foto.uraian_singkat }}</p>
                 <a href="{% url 'foto' %}" class="service-btn">
-                  Learn More
+                  Selengkapnya
                   <i class="fas fa-arrow-right"></i>
                 </a>
                 <hr class="my-2" />
@@ -331,7 +330,7 @@
                 <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ video.judul_video }}</h3>
                 <p>{{ video.uraian_singkat }}</p>
                 <a href="{% url 'video' %}" class="service-btn">
-                  Learn More
+                  Selengkapnya
                   <i class="fas fa-arrow-right"></i>
                 </a>
                 <hr class="my-2" />
@@ -360,12 +359,12 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center">
-            <h2 data-aos="fade-up" data-aos-delay="200">Your Health is Our Priority</h2>
-            <p data-aos="fade-up" data-aos-delay="250">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            <h2 data-aos="fade-up" data-aos-delay="200">Rekomtek SDA</h2>
+            <p data-aos="fade-up" data-aos-delay="250"> Rekomtek SDA adalah rekomendasi teknis yang menjadi acuan dalam perizinan, pengelolaan, dan pemanfaatan sumber daya air secara berkelanjutan</p>
 
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-              <a href="appointment.html" class="btn-primary">Book Appointment</a>
-              <a href="doctors.html" class="btn-secondary">Find a Doctor</a>
+              <a href="{% url 'form_permohonan_dashboard' %}" class="btn-primary">Pengajuan Permohonan</a>
+              <a href="doctors.html" class="btn-secondary">Sebaran Perizinan</a>
             </div>
           </div>
         </div>
@@ -375,12 +374,12 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="feature-card">
               <div class="icon-wrapper">
-                <i class="bi bi-heart-pulse"></i>
+                <i class="bi bi-water"></i>
               </div>
-              <h5>24/7 Emergency Care</h5>
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+              <h5>Pola Wilayah Sungai</h5>
+              <p>Dokumen perencanaan pengelolaan wilayah sungai yang menjadi pedoman dalam pemanfaatan dan perlindungan sumber daya air</p>
               <a href="#" class="feature-link">
-                <span>Learn More</span>
+                <span>Selengkapnya</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -389,12 +388,12 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="feature-card">
               <div class="icon-wrapper">
-                <i class="bi bi-calendar-check"></i>
+                <i class="bi bi-journal-text"></i>
               </div>
-              <h5>Easy Online Booking</h5>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <h5>Rencana PSDA Wilayah Sungai</h5>
+              <p>Rencana Pengelolaan Sumber Daya Air yang memuat program dan strategi pengelolaan wilayah sungai secara berkelanjutan</p>
               <a href="#" class="feature-link">
-                <span>Book Now</span>
+                <span>Selengkapnya</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -403,41 +402,18 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="feature-card">
               <div class="icon-wrapper">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-people-fill"></i>
               </div>
-              <h5>Expert Medical Team</h5>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
+              <h5>Pemberdayaan Masyarakat</h5>
+              <p>Upaya meningkatkan peran serta masyarakat dalam konservasi, pemanfaatan, dan pengelolaan sumber daya air</p>
               <a href="#" class="feature-link">
-                <span>Meet Our Doctors</span>
+                <span>Selengkapnya</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
           </div>
 
         </div>
-
-        <div class="emergency-alert" data-aos="zoom-in" data-aos-delay="500">
-          <div class="row align-items-center">
-            <div class="col-lg-8">
-              <div class="emergency-content">
-                <div class="emergency-icon">
-                  <i class="bi bi-telephone-fill"></i>
-                </div>
-                <div class="emergency-text">
-                  <h4>Medical Emergency?</h4>
-                  <p>Call our 24/7 emergency hotline for immediate assistance</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 text-end">
-              <a href="tel:911" class="emergency-btn">
-                <i class="bi bi-telephone-fill"></i>
-                Call (555) 123-4567
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </section><!-- /Call To Action Section -->

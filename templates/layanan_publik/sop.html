@@ -70,14 +70,14 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/"><i class="bi bi-house"></i> Home</a></li>
-              <li class="breadcrumb-item"><a href="/">Hasil Survey Kepuasan</a></li>
-              <li class="breadcrumb-item active current">indeks Kepuasan Masyarakat (IKM)</li>
+              <li class="breadcrumb-item"><a href="/">Layanan Publik</a></li>
+              <li class="breadcrumb-item active current">SOP</li>
             </ol>
           </nav>
         </div>
 
         <div class="title-wrapper text-center" data-aos="zoom-in">
-          <h1 class="page-heading">Indeks Kepuasan Masyarakat</h1>
+          <h1 class="page-heading">SOP</h1>
         </div>
       </div>
     </div>
@@ -92,32 +92,32 @@
             <thead class="table-primary text-center">
               <tr>
                 <th style="width: 50px;">No</th>
-                <th>Daftar IKM</th>
+                <th>Daftar SOP</th>
                 <th style="width: 120px;">Aksi</th>
               </tr>
             </thead>
             <tbody>
-              {% for ikm in file_ikm %}
+              {% for sop in file_sop %}
               <tr>
                 <td class="text-center">{{ forloop.counter }}</td>
-                <td class="text-center">{{ikm.judul }}</td>
+                <td class="text-center">{{sop.judul }}</td>
                 <td class="text-center">
-                  <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#previewModal{{ikm.id }}">
+                  <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#previewModal{{ sop.id }}">
                     <i class="bi bi-eye"></i> Preview
                   </button>
                 </td>
               </tr>
 
               <!-- Modal Preview -->
-              <div class="modal fade" id="previewModal{{ ikm.id }}" tabindex="-1" aria-labelledby="modalLabel{{ ikm.id }}" aria-hidden="true">
+              <div class="modal fade" id="previewModal{{ sop.id }}" tabindex="-1" aria-labelledby="modalLabel{{ sop.id }}" aria-hidden="true">
                 <div class="modal-dialog modal-xl" style="max-width:90%;">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="modalLabel{{ikm.id }}">{{ ikm.judul }}</h5>
+                      <h5 class="modal-title" id="modalLabel{ {sop.id }}">{{ sop.judul }}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" style="height:80vh;">
-                      <iframe src="{{ikm.file.url }}" width="100%" height="100%" style="border:none;"></iframe>
+                      <iframe src="{{ sop.file.url }}" width="100%" height="100%" style="border:none;"></iframe>
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@
 
               {% empty %}
               <tr>
-                <td colspan="3" class="text-center">Belum ada IKM yang diunggah</td>
+                <td colspan="3" class="text-center">Belum ada SOP yang diunggah</td>
               </tr>
               {% endfor %}
             </tbody>

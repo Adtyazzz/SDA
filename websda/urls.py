@@ -31,7 +31,8 @@ urlpatterns = [
     path("Media_informasi/", include('media_informasi.urls')),
     path("Informasi_SDA/", include('informasi_sda.urls')),
     path("Hasil_Survey_Kepuasan/", include('hasil_survey_kepuasan.urls')),
-    path("dashboard/", include('dashboard.urls'))
+    path("dashboard/", include('dashboard.urls')),
+    path("Layanan_publik/", include('layanan_publik.urls'))
 
 ]
 

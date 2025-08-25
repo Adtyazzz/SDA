@@ -70,50 +70,35 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    
-
-   <div class="page-title" data-aos="fade-up">
-    <div class="page-title position-relative">
-      <div class="breadcrumbs">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="/">Media Informasi</a></li>
-            <li class="breadcrumb-item active current">Majalah Banyu</li>
-          </ol>
-        </nav>
+     <!-- Page Title -->
+    <div class="page-title">
+      <div class="container">
+        <div class="breadcrumbs">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/"><i class="bi bi-house"></i> Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Publikasi</a></li>
+              <li class="breadcrumb-item active current">Majalah Banyu</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="title-wrapper text-center" data-aos="zoom-in">
+          <h1 class="page-heading">MAJALAH BANYU</h1>
+        </div>
       </div>
-  <section class="py-5 text-center section-accent">
-      <div class="mt-2">
-        <h2 class="display-4 fw-bold">
-          <img src="{% static 'halaman/assets/img/Logo_PU.jpg' %}" alt="Logo Kantor" style="height: 40px; vertical-align: middle; margin-right: 10px;">
-          Komitmen Kami untuk Masa Depan
-        </h2>
-        <p class="fw-bold lead text-muted">
-          Mewujudkan pengelolaan sumber daya air yang berkelanjutan dan adil demi kesejahteraan masyarakat Kalimantan Timur <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo Kantor" style="height: 40px; vertical-align: middle; margin-right: 10px;">
-        </p>
-      </div>
-  </section>
-</div>
-
-      </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
 
    <main class="main">
     <section id="majalah-banyu" class="terms-of-service section">
       <div class="container" data-aos="fade-up">
-        <div style="text-align: center;">
-          <h1 class="fw-bold border-bottom pb-2">Majalah Banyu</h1>
-        </div>
-
         <div class="table-responsive mt-4">
           <table class="table table-bordered table-striped">
             <thead class="table-primary text-center">
               <tr>
                 <th style="width: 50px;">No</th>
-                <th>Periode Kejadian</th>
+                <th>Periode</th>
                 <th style="width: 120px;">Aksi</th>
               </tr>
             </thead>
@@ -121,7 +106,7 @@
               {% for majalah in majalah_banyu %}
               <tr>
                 <td class="text-center">{{ forloop.counter }}</td>
-                <td>{{ majalah.judul }}</td>
+                <td class="text-center">{{ majalah.judul }}</td>
                 <td class="text-center">
                   <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#previewModal{{ majalah.id }}">
                     <i class="bi bi-eye"></i> Preview

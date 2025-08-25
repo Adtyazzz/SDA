@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Layanan(models.Model):
     nama_layanan = models.CharField(max_length=255)
@@ -76,7 +77,7 @@ class StatusRekomendasiTeknis(models.Model):
         ('diterima', 'Diterima'),
         ('ditolak', 'Ditolak'),
     ]
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     rekomtek = models.ForeignKey(RekomendasiTeknis, on_delete=models.CASCADE, related_name='status_rekomtek', null=True, blank=True)
     status = models.CharField(
         max_length=20, 

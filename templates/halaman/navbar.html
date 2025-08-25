@@ -29,7 +29,6 @@
       <a href="#"><span>APLIKASI</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
       <ul>
         <li><a href="https://katalog-peta.portal-sdadpuprkaltim.my.id/geonetwork" target="_blank">Katalog Peta Sumber Daya Air</a></li>
-        <li><a href="https://portal-sdadpuprkaltim.my.id/admin/login" target="_blank">Progres Pekerjaan</a></li>
         <li><a href="http://ews.portal-sdadpuprkaltim.info/" target="_blank">Early Warning Sistem</a></li>
         <li><a href="http://sih3.gginformatika.com/" target="_blank">SIH3</a></li>
         <li><a href="https://srikandi.layanan.go.id/" target="_blank">E - Office SRIKANDI</a></li>
@@ -95,13 +94,13 @@
       <a href="#"><span>LAYANAN PUBLIK</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
       <ul>
         <li><a href="https://www.lapor.go.id/" target="_blank">Pengaduan</a></li>
-        <li><a href="#">Peraturan</a></li>
-        <li><a href="#">SOP</a> </li>
+        <li><a href="{% url 'peraturan' %}">Peraturan</a></li>
+        <li><a href="{% url 'sop' %}">SOP</a> </li>
       </ul>
     </li>
 
     <!-- Contact -->
-    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'contact' %}">Hubungi Kami</a></li>
   </ul>
 
   <!-- Tombol toggle menu mobile -->

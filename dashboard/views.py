@@ -5,6 +5,7 @@ from dashboard.forms import UserUpdateForm, FotoProfilForm
 from rekomtek.forms import RekomendasiTeknisForm, IntakeFormSet
 from rekomtek.models import StatusRekomendasiTeknis
 from django.db.models import Q
+from dashboard.models import foto_profil
 
 from django.contrib.auth.decorators import login_required
 
@@ -13,11 +14,25 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='akun_login')
 def dashboard(request):
     template_name = 'dashboard/index.html'
+    file_foto = foto_profil.objects.filter(user=request.user).first()
+
+    # Query StatusRekomendasiTeknis berdasarkan user yang login
+    qs = StatusRekomendasiTeknis.objects.filter(user=request.user)
+
+    total_permohonan = qs.count()
+    total_diterima = qs.filter(status="diterima").count()
+    total_ditolak = qs.filter(status="ditolak").count()
+    total_proses = qs.filter(status="proses").count()
+
     context = {
-        'title':'Dashboard',
+        'title': 'Dashboard',
+        'file_foto': file_foto,
+        "total_permohonan": total_permohonan,
+        "total_diterima": total_diterima,
+        "total_ditolak": total_ditolak,
+        "total_proses": total_proses,
     }
     return render(request, template_name, context)
-
 
 @login_required(login_url='akun_login')
 def form_permohonan_dashboard(request):
@@ -28,17 +43,19 @@ def form_permohonan_dashboard(request):
         intake_formset = IntakeFormSet(request.POST, request.FILES, prefix="intake")
 
         if form.is_valid() and intake_formset.is_valid():
+            # Simpan permohonan
             permohonan = form.save(commit=False)
             permohonan.user = request.user  # simpan siapa yang submit
             permohonan.save()
 
-            # ✅ Tambahkan record status default
+            # Simpan status default dengan user (lebih aman)
             StatusRekomendasiTeknis.objects.create(
                 rekomtek=permohonan,
+                user=request.user if request.user.is_authenticated else None,
                 status="proses"
             )
 
-            # simpan intake formset
+            # Simpan intake formset
             intakes = intake_formset.save(commit=False)
             for intake in intakes:
                 intake.rekomtek = permohonan  # foreign key ke permohonan
@@ -50,10 +67,14 @@ def form_permohonan_dashboard(request):
         form = RekomendasiTeknisForm()
         intake_formset = IntakeFormSet(prefix="intake")
 
+    # Ambil foto profil user
+    file_foto = foto_profil.objects.filter(user=request.user).first()
+
     context = {
         "title": "Form Permohonan Izin SDA",
         "form": form,
         "intake_formset": intake_formset,
+        "file_foto": file_foto,
     }
     return render(request, template_name, context)
 

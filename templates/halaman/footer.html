@@ -1,88 +1,76 @@
 {% load static %}
 
-<footer id="footer" class="footer position-relative section-accent bg-dark text-light py-5">
-  <div class="container footer-top">
+<footer id="footer" class="footer bg-dark text-light pt-5 pb-4">
+  <div class="container">
     <div class="row gy-4">
 
       <!-- Logo & Kontak -->
-      <div class="col-lg-4 col-md-6 footer-about">
+      <div class="col-lg-4 col-md-6 footer-about border-end pe-4">
         <a href="/" class="logo d-flex align-items-center mb-3">
-          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo Kantor" width="50" height="50" class="me-2">
-          <h5 class="mb-0 text-light">KaltimProv</h5>
+          <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo Kantor" class="logo-footer me-2">
+          <h5 class="mb-0 text-light fw-bold">DPUPR PERA KALTIM</h5>
         </a>
-        <div class="footer-contact">
-          <p>Jl. Tengkawang No. 1 Gedung A Lantai I-II </p>
-          <p>Kel. Teluk Lerong Ulu, Kecamatan Sungai Kunjang, Samarinda</p>
-          <p class="mt-3"><strong>Telpon</strong> <span>(0541) 276242</span></p>
-          <p><strong>Email:</strong> <span>bidsda.dpuprperakaltim@gmail.com	</span></p>
+        <div class="footer-contact small">
+          <p class="mb-1">Jl. Tengkawang No. 1 Gedung A Lantai I - II</p>
+          <p class="mb-1">Kel. Lok Bahu, Kecamatan Sungai Kunjang, Samarinda</p>
+          <p class="mb-0"><strong>Email:</strong> bidsda.dpuprperakaltim@gmail.com</p>
         </div>
         <div class="social-links d-flex mt-4 gap-3">
-          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
           <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
 
       <!-- Navigasi Footer -->
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h6 class="text-uppercase fw-bold mb-3">Navigasi</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-light text-decoration-none">Beranda</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Tentang Kami</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Layanan</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Syarat & Ketentuan</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Kebijakan Privasi</a></li>
+      <div class="col-lg-2 col-md-6 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3 text-light">Profil</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{% url 'visi_misi' %}" class="footer-link text-light">Visi Dan Misi</a></li>
+          <li><a href="{% url 'tugas_fungsi' %}" class="footer-link text-light">Tugas Dan Fungsi</a></li>
+          <li><a href="{% url 'struktur_organisasi' %}" class="footer-link text-light">Struktur Organisasi</a></li>
+          <li><a href="{% url 'sejarah' %}" class="footer-link text-light">Sejarah</a></li>
+          <li><a href="https://maps.app.goo.gl/ZEyGVMGosLNpjF5m8" target="_blank" class="footer-link text-light">Lokasi Kantor</a></li>
         </ul>
       </div>
 
-      <!-- Layanan Kami -->
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h6 class="text-uppercase fw-bold mb-3">Layanan</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-light text-decoration-none">Web Design</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Development</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Manajemen Produk</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Marketing</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Grafis</a></li>
+      <div class="col-lg-2 col-md-6 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3 text-light">Aplikasi</h6>
+        <ul class="list-unstyled small">
+          <li><a href="https://katalog-peta.portal-sdadpuprkaltim.my.id/geonetwork" target="_blank" class="footer-link text-light">Katalog Peta SDA</a></li>
+          <li><a href="http://ews.portal-sdadpuprkaltim.info/" target="_blank" class="footer-link text-light">Early Warning Sistem</a></li>
+          <li><a href="http://sih3.gginformatika.com/" target="_blank" class="footer-link text-light">SIH3</a></li>
+          <li><a href="https://srikandi.layanan.go.id/" target="_blank" class="footer-link text-light">E-Office SRIKANDI</a></li>
+          <li><a href="https://siteman-irigasi.kaltimprov.go.id/" target="_blank" class="footer-link text-light">Siteman Irigasi</a></li>
         </ul>
       </div>
 
-      <!-- Info Tambahan -->
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h6 class="text-uppercase fw-bold mb-3">Informasi</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-light text-decoration-none">Karir</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Bantuan</a></li>
-          <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Kontak</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Sitemap</a></li>
+      <div class="col-lg-2 col-md-6 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3 text-light">Kelembagaan</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{% url 'tkpsda' %}" class="footer-link text-light">TKPSDA</a></li>
+          <li><a href="#" class="footer-link text-light">Dewan SDA</a></li>
+          <li><a href="#" class="footer-link text-light">Komisi Irigasi</a></li>
         </ul>
       </div>
 
-      <!-- Tautan Ekstra -->
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h6 class="text-uppercase fw-bold mb-3">Ekstra</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-light text-decoration-none">Blog</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Event</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Galeri</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Berita</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Download</a></li>
+      <div class="col-lg-2 col-md-6 footer-links">
+        <h6 class="text-uppercase fw-bold mb-3 text-light">Layanan Publik</h6>
+        <ul class="list-unstyled small">
+          <li><a href="https://www.lapor.go.id/" target="_blank" class="footer-link text-light">Pengaduan</a></li>
+          <li><a href="{% url 'peraturan' %}" class="footer-link text-light">Peraturan</a></li>
+          <li><a href="{% url 'sop' %}" class="footer-link text-light">SOP</a></li>
         </ul>
       </div>
-
     </div>
-  </div>
 
-  <!-- Garis Pemisah -->
-  <hr class="text-secondary mt-5">
+    <!-- Garis Pemisah -->
+    <hr class="text-secondary mt-5">
 
-  <!-- Copyright -->
-  <div class="container text-center mt-3">
-    <p class="mb-1">© <strong>2025</strong> <span class="sitename text-light">KaltimProv</span>. All Rights Reserved.</p>
-    <div class="credits small text-secondary">
-      Desain oleh <a href="https://bootstrapmade.com/" class="text-decoration-none text-light">BootstrapMade</a>
+    <!-- Copyright -->
+    <div class="text-center">
+      <p class="mb-1 small">© Dinas Pekerjaan Umum, Penataan Ruang dan Perumahan Rakyat Provinsi Kalimantan Timur</p>
+      <div class="credits small text-secondary">
+        Desain oleh <a href="https://bootstrapmade.com/" class="text-decoration-none text-light">BootstrapMade</a>
+      </div>
     </div>
   </div>
 </footer>
