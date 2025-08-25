@@ -6227,6 +6227,32 @@ section,
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
+.footer-links ul li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+  .footer-about {
+    border-end: none !important;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+  .footer-about .logo {
+    justify-content: center;
+  }
+  .footer-contact {
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .footer-links {
+    text-align: center;
+  }
+}
+
+
+
 
 }
 

@@ -1,19 +1,10 @@
-from django.shortcuts import render, redirect
-from contact.forms import KontakForm
+from django.shortcuts import render
+
 
 # Create your views here.
 def contact(request):
     template_name = 'halaman/contact.html'
-    form = KontakForm()
-    success = False
-
-    if request.method == 'POST':
-        form = KontakForm(request.POST)
-        if form.is_valid():
-            form.save()
-            success = True  # bisa kamu pakai untuk notif
     context = {
-        'form': form,
-        'success': success,
+        'title' : 'Hubungi Kami'
     }
     return render(request, template_name, context)

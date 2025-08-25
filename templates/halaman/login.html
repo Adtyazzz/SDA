@@ -19,6 +19,69 @@
   <link href="{% static 'dashboard/assets/css/paper-dashboard.css' %}?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{% static 'dashboard/assets/demo/demo.css' %}" rel="stylesheet" />
+
+  <style>
+    /* --- Custom Alert Styling --- */
+    .custom-alert {
+      position: relative;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 12px 40px 12px 18px;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 15px;
+      animation: fadeInDown 0.6s ease;
+    }
+
+    .custom-alert .close {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      color: #fff;
+      opacity: 0.9;
+      font-size: 20px;
+    }
+
+    .custom-alert .close:hover {
+      opacity: 1;
+    }
+
+    /* Warna sesuai tags Django */
+    .alert-success {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+    }
+
+    .alert-error,
+    .alert-danger {
+      background: linear-gradient(135deg, #e53935, #b71c1c);
+      color: #fff;
+    }
+
+    .alert-warning {
+      background: linear-gradient(135deg, #fbc02d, #f57f17);
+      color: #fff;
+    }
+
+    .alert-info {
+      background: linear-gradient(135deg, #29b6f6, #0288d1);
+      color: #fff;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body class="login-page">
@@ -35,7 +98,8 @@
         </div>
         <a class="navbar-brand" href="javascript:;">Paper Dashboard 2 PRO</a>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
         <span class="navbar-toggler-bar navbar-kebab"></span>
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -54,19 +118,52 @@
               Register
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ wa_url }}" target="_blank" class="nav-link text-success font-weight-bold">
+              <i class="fa fa-whatsapp"></i>
+              Aktivasi Akun
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Navbar -->
   <div class="wrapper wrapper-full-page ">
-    <div class="full-page section-image" filter-color="black" data-image="{% static 'dashboard/assets/img/bg/fabio-mangione.jpg' %}">
-      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    <div class="full-page section-image" filter-color="black"
+      data-image="{% static 'dashboard/assets/img/bg/fabio-mangione.jpg' %}">
       <div class="content">
         <div class="container">
           <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+
+            <!-- ALERT PESAN -->
+            {% if messages %}
+            <div class="alert-container">
+              {% for message in messages %}
+              <div
+                class="alert custom-alert alert-{{ message.tags }} alert-dismissible fade show text-center"
+                role="alert">
+                {% if message.tags == 'success' %}
+                <i class="fa fa-check-circle mr-2"></i>
+                {% elif message.tags == 'error' or message.tags == 'danger' %}
+                <i class="fa fa-times-circle mr-2"></i>
+                {% elif message.tags == 'warning' %}
+                <i class="fa fa-exclamation-triangle mr-2"></i>
+                {% elif message.tags == 'info' %}
+                <i class="fa fa-info-circle mr-2"></i>
+                {% endif %}
+                {{ message|safe }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- FORM LOGIN -->
             <form class="form" method="post">
-                {% csrf_token %}
+              {% csrf_token %}
               <div class="card card-login">
                 <div class="card-header ">
                   <div class="card-header ">
@@ -91,7 +188,7 @@
                     <input name="password" type="password" placeholder="Password" class="form-control" required>
                   </div>
                   <br />
-                    <p style="text-align: center; color: red; font-weight: bold;"> {{ pesan }}</p>
+                  <p style="text-align: center; color: red; font-weight: bold;"> {{ pesan }}</p>
                 </div>
                 <div class="card-footer ">
                   <button type="submit" class="btn btn-info btn-round btn-block mb-3">Login</button>
@@ -129,45 +226,30 @@
   <script src="{% static 'dashboard/assets/js/core/bootstrap.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/moment.min.js' %}"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
   <script src="{% static 'dashboard/assets/js/plugins/bootstrap-switch.js' %}"></script>
-  <!--  Plugin for Sweet Alert -->
   <script src="{% static 'dashboard/assets/js/plugins/sweetalert2.min.js' %}"></script>
-  <!-- Forms Validations Plugin -->
   <script src="{% static 'dashboard/assets/js/plugins/jquery.validate.min.js' %}"></script>
-  <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
   <script src="{% static 'dashboard/assets/js/plugins/jquery.bootstrap-wizard.js' %}"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="{% static 'dashboard/assets/js/plugins/bootstrap-selectpicker.js' %}"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="{% static 'dashboard/assets/js/plugins/bootstrap-datetimepicker.js' %}"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
   <script src="{% static 'dashboard/assets/js/plugins/jquery.dataTables.min.js' %}"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="{% static 'dashboard/assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
-  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="{% static 'dashboard/assets/js/plugins/jasny-bootstrap.min.js' %}"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
   <script src="{% static 'dashboard/assets/js/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/fullcalendar/daygrid.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/fullcalendar/timegrid.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/fullcalendar/interaction.min.js' %}"></script>
-  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
   <script src="{% static 'dashboard/assets/js/plugins/jquery-jvectormap.js' %}"></script>
-  <!--  Plugin for the Bootstrap Table -->
   <script src="{% static 'dashboard/assets/js/plugins/nouislider.min.js' %}"></script>
-  <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
   <script src="{% static 'dashboard/assets/js/plugins/chartjs.min.js' %}"></script>
-  <!--  Notifications Plugin    -->
   <script src="{% static 'dashboard/assets/js/plugins/bootstrap-notify.js' %}"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{% static 'dashboard/assets/js/paper-dashboard.min.js' %}?v=2.1.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="{% static 'dashboard/assets/js/paper-dashboard.min.js' %}?v=2.1.1" type="text/javascript"></script>
   <script src="{% static 'dashboard/assets/demo/demo.js' %}"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       demo.checkFullPageBackgroundImage();
+      // Tidak auto-dismiss, alert tetap ada sampai user klik close
     });
   </script>
 </body>
