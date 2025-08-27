@@ -9,7 +9,7 @@ class KategoriKegiatanFisik(models.Model):
         return self.nama_kategori
     
     class Meta:
-        verbose_name_plural = '1. Kategori Kegiatan Fisik'
+        verbose_name_plural = '1. Kategori Fisik'
 
 class Foto(models.Model):
     kategori = models.ForeignKey(KategoriKegiatanFisik, on_delete=models.SET_NULL, blank=True, null=True)
@@ -24,7 +24,7 @@ class Foto(models.Model):
         return self.nama_kegiatan
     
     class Meta:
-        verbose_name_plural = '3. Foto Kegiatan Fisik'
+        verbose_name_plural = '3. Foto Fisik'
 
 class KategoriKegiatanPerencanaan(models.Model):
     nama_kategori = models.CharField(max_length=100)
@@ -33,7 +33,7 @@ class KategoriKegiatanPerencanaan(models.Model):
         return self.nama_kategori
     
     class Meta:
-        verbose_name_plural = '2. Kategori Kegiatan Perencanaan'
+        verbose_name_plural = '2. Kategori Perencanaan'
     
         
 class FotoKegiatanPerencanaan(models.Model):
@@ -49,7 +49,7 @@ class FotoKegiatanPerencanaan(models.Model):
         return self.nama_kegiatan
     
     class Meta:
-        verbose_name_plural = '4. Foto Kegiatan Perencanaan'
+        verbose_name_plural = '4.Foto Perencanaan'
 
 class Video(models.Model):
     judul_video = models.CharField(max_length=255, blank=True, null=True)
@@ -63,7 +63,7 @@ class Video(models.Model):
         return self.judul_video
     
     class Meta:
-        verbose_name_plural = '5. Video Kegiatan Fisik'
+        verbose_name_plural = '5. Video Fisik'
 
 class VideoKegiatanPerencanaan(models.Model):
     judul_video = models.CharField(max_length=255, blank=True, null=True)
@@ -77,4 +77,4 @@ class VideoKegiatanPerencanaan(models.Model):
         return self.judul_video
     
     class Meta:
-        verbose_name_plural = '5. Video Kegiatan Perencanaan'
+        verbose_name_plural = '6. Video Perencanaan'

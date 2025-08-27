@@ -82,7 +82,7 @@ def akun_registrasi(request):
                 user_simpan.save()
 
                 # Buat template pesan WA
-                wa_number = "628115580305"  # ganti dengan nomor admin
+                wa_number = "6281241702805"  # ganti dengan nomor admin
                 wa_message = (
                     f"Halo Admin, saya ingin mengaktifkan akun saya.\n"
                     f"Username: {username}\n"

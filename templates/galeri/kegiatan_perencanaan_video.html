@@ -32,34 +32,7 @@
 
 <body class="gallery-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-  <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-    <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-      <div class="navbar-brand d-flex align-items-center">
-        <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
-        <h1 class="sitename m-0">Portal Informasi SDA</h1>
-      </div>
-    </a>
-
-    {% include 'halaman/navbar.html' %}
-
-    <!-- Pindahkan toggle di sini, DI LUAR navmenu -->
-    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-
-    {% if user.is_authenticated %}
-  {% if user.is_staff or user.is_superuser %}
-    <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
-  {% else %}
-    <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-  {% endif %}
-{% else %}
-  <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
-{% endif %}
-
-  </div>
-</header>
-
+{% include 'halaman/navbar.html' %}
 
   <main class="main">
 

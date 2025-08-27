@@ -178,3 +178,32 @@
   }
 </style>
 {% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.getElementById('logout-link');
+
+    if (logoutLink) {
+      logoutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        Swal.fire({
+          title: 'Keluar dari akun?',
+          text: 'Anda akan keluar dari sesi saat ini.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Ya, logout',
+          cancelButtonText: 'Batal',
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#6c757d'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = logoutLink.href;
+          }
+        });
+      });
+    }
+  });
+</script>
+{% endblock %}

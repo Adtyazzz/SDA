@@ -41,32 +41,9 @@
   
   <body class="about-page">
     
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+  {% include 'halaman/navbar.html' %}
         
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
-          <div class="navbar-brand d-flex align-items-center">
-            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
-            <h1 class="sitename m-0">Portal Informasi SDA</h1>
-          </div>
-        </a>
-        
-        {% include 'halaman/navbar.html' %}
-        
-        {% if user.is_authenticated %}
-  {% if user.is_staff or user.is_superuser %}
-    <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
-  {% else %}
-    <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
-  {% endif %}
-{% else %}
-  <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
-{% endif %}
-        
-      </div>
-    </header>
     
     <main class="main">
       

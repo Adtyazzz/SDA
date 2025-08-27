@@ -175,8 +175,8 @@
           </button>
         </div>
 
-        </div>
       </form>
+        </div>
 
     </div>
   </div>
@@ -254,6 +254,35 @@ document.addEventListener('DOMContentLoaded', function() {
   layananSelect.addEventListener('change', toggleIntake);
 });
 </script>
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const izinForm = document.getElementById('izinForm');
+      const submitBtn = izinForm.querySelector('button[type="submit"]');
 
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function(e) {
+          e.preventDefault();
 
+          Swal.fire({
+            title: 'Kirim Usulan?',
+            text: 'Pastikan semua data sudah diisi dengan benar.',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, kirim!',
+            cancelButtonText: 'Batal',
+            confirmButtonColor: '#007bff',
+            cancelButtonColor: '#6c757d'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              izinForm.submit();
+            }
+          });
+        });
+      }
+    });
+  </script>
+  
+{% endblock %}
 {% endblock %}

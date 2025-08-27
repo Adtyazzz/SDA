@@ -11,7 +11,7 @@ class Ikm(models.Model):
         return self.judul
     
     class Meta:
-        verbose_name_plural = '1. Indeks Kepuasan Masyarakat'
+        verbose_name_plural = '1. IKM'
 
 class Hidrologi(models.Model):
     judul = models.CharField(max_length=255, blank=True, null=True)

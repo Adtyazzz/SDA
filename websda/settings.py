@@ -225,3 +225,65 @@ CKEDITOR_CONFIGS = {
     }
 }
 # end ckeditor config 
+
+JAZZMIN_SETTINGS = {
+    "site_title": "PU Admin",
+    "site_header": "DASHBOARD ADMIN",
+    "welcome_sign": "Selamat datang di Admin PU",        # Logo di sidebar/header
+    "site_icon": "halaman/assets/img/logopemprov.png",         # Favicon di tab browser
+    "site_brand": "DASHBOARD ADMIN",                                   # Nama brand di header
+    "site_logo_classes": "img-circle elevation-3",              # Styling opsional
+    "show_sidebar": True,
+    "navigation_expanded": False,
+    "custom_css": "css/custom_admin.css",
+
+    # Urutan aplikasi di sidebar
+    "order_with_respect_to": [
+        "galeri",
+        "berita",
+        "profil",
+        "layanan_publik",
+        "kelembagaan",
+        "media_informasi",
+        "auth",
+    ],
+
+    # Ikon untuk model agar lebih visual
+    "icons": {
+        # Galeri
+        "galeri.KategoriKegiatanFisik": "fas fa-list-alt",
+        "galeri.KategoriKegiatanPerencanaan": "fas fa-tasks",
+        "galeri.KegiatanFisik": "fas fa-hard-hat",
+        "galeri.FotoKegiatanFisik": "fas fa-camera",
+        "galeri.VideoKegiatanFisik": "fas fa-video",
+        "galeri.KegiatanPerencanaan": "fas fa-project-diagram",
+        "galeri.FotoKegiatanPerencanaan": "fas fa-camera-retro",
+        "galeri.VideoKegiatanPerencanaan": "fas fa-film",
+
+        # Berita
+        "berita.Kategori": "fas fa-folder-open",
+        "berita.Artikel": "fas fa-newspaper",
+
+        # Profil
+        "profil.VisiMisi": "fas fa-bullseye",
+        "profil.TugasFungsi": "fas fa-clipboard-list",
+        "profil.StrukturOrganisasi": "fas fa-sitemap",
+
+        # Kelembagaan
+        "kelembagaan.TPS3R": "fas fa-recycle",
+
+        # Layanan Publik
+        "layanan_publik.Persampahan": "fas fa-trash-alt",
+        "layanan_publik.SPALD": "fas fa-water",
+
+        # Media Informasi
+        "media_informasi.MajalahBanyu": "fas fa-book-open",
+
+        # Auth
+        "auth.User": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+
+    # Link khusus di sidebar
+
+}
