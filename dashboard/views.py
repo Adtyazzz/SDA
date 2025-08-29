@@ -3,9 +3,11 @@ from django.contrib import messages
 from dashboard.models import foto_profil
 from dashboard.forms import UserUpdateForm, FotoProfilForm
 from rekomtek.forms import RekomendasiTeknisForm, IntakeFormSet
-from rekomtek.models import StatusRekomendasiTeknis
+from rekomtek.models import StatusRekomendasiTeknis, RekomendasiTeknis
 from django.db.models import Q
 from dashboard.models import foto_profil
+from django.shortcuts import get_object_or_404
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -139,3 +141,43 @@ def edit_profil(request):
         'profil': profil,  # biar bisa dipanggil avatar langsung di template
     }
     return render(request, template_name, context)
+
+
+@login_required
+def histori_permohonan(request):
+    template_name = 'dashboard/snippets/histori.html'
+    status = request.GET.get("status", "all")
+    data = RekomendasiTeknis.objects.filter(user=request.user)
+
+    context = {
+        'title': 'Riwayat Permohonan',
+        'data' : data,
+        'status': status
+    }
+    return render(request, template_name, context)
+
+@login_required
+def status_diterima(request):
+    template_name = 'dashboard/snippets/status_diterima.html'
+    data = RekomendasiTeknis.objects.filter(status_rekomtek__status="diterima")
+    context = {
+        'title': 'Status Diterima',
+        'data' : data
+    }
+    return render(request, template_name, context)
+
+@login_required
+def status_diterima_detail(request, pk):
+    template_name = 'dashboard/snippets/status_diterima_detail.html'
+    data = get_object_or_404(RekomendasiTeknis, pk=pk)
+
+    # Ambil status terakhir (kalau ada banyak)
+    status = data.status_rekomtek.last()
+
+    context = {
+        'title': 'Detail Permohonan Diterima',
+        'data': data,
+        'status': status
+    }
+    return render(request, template_name, context)
+

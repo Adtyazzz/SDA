@@ -1,0 +1,71 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ data.layanan }}</h4>
+        <p class="card-category">Detail Permohonan Diterima</p>
+      </div>
+      <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-4">Pemohon</dt>
+          <dd class="col-sm-8">{{ data.nama_pemohon }}</dd>
+
+          <dt class="col-sm-4">Tanggal Permohonan</dt>
+          <dd class="col-sm-8">{{ data.tanggal_permohonan|date:"d M Y" }}</dd>
+
+          <dt class="col-sm-4">Jenis Layanan</dt>
+          <dd class="col-sm-8">{{ data.layanan }}</dd>
+        </dl>
+
+        <hr>
+
+        <h5>Status Rekomendasi Teknis</h5>
+        {% if status %}
+        <dl class="row">
+          <dt class="col-sm-4">Status</dt>
+          <dd class="col-sm-8">
+            {% if status.status == 'diterima' %}
+              <span class="badge bg-success">Diterima</span>
+            {% elif status.status == 'proses' %}
+              <span class="badge bg-warning text-dark">Sedang Diproses</span>
+            {% elif status.status == 'ditolak' %}
+              <span class="badge bg-danger">Ditolak</span>
+            {% endif %}
+          </dd>
+
+          {% if status.keterangan %}
+          <dt class="col-sm-4">Keterangan</dt>
+          <dd class="col-sm-8">{{ status.keterangan }}</dd>
+          {% endif %}
+
+          {% if status.jadwal_kunjungan_lapangan %}
+          <dt class="col-sm-4">Jadwal Kunjungan</dt>
+          <dd class="col-sm-8">{{ status.jadwal_kunjungan_lapangan|date:"d M Y" }}</dd>
+          {% endif %}
+
+          {% if status.tanggal_kunjungan_lapangan_1 %}
+          <dt class="col-sm-4">Kunjungan Lapangan 1</dt>
+          <dd class="col-sm-8">{{ status.tanggal_kunjungan_lapangan_1|date:"d M Y" }}</dd>
+          {% endif %}
+
+          {% if status.tanggal_kunjungan_lapangan_2 %}
+          <dt class="col-sm-4">Kunjungan Lapangan 2</dt>
+          <dd class="col-sm-8">{{ status.tanggal_kunjungan_lapangan_2|date:"d M Y" }}</dd>
+          {% endif %}
+
+          <dt class="col-sm-4">Tanggal Kirim</dt>
+          <dd class="col-sm-8">{{ status.tanggal_kirim|date:"d M Y" }}</dd>
+        </dl>
+        {% else %}
+          <p class="text-muted">Belum ada status rekomtek.</p>
+        {% endif %}
+
+        <a href="{% url 'status_diterima' %}" class="btn btn-secondary">Kembali</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

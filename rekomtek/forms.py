@@ -5,7 +5,7 @@ from rekomtek.models import RekomendasiTeknis, Intake
 class RekomendasiTeknisForm(forms.ModelForm):
     class Meta:
         model = RekomendasiTeknis
-        exclude = ['tanggal_permohonan', 'jadwal_kunjungan_lapangan', 'tanggal_kunjungan_lapangan_1', 'tanggal_kunjungan_lapangan_2']
+        exclude = ['user','tanggal_permohonan', 'jadwal_kunjungan_lapangan', 'tanggal_kunjungan_lapangan_1', 'tanggal_kunjungan_lapangan_2']
         widgets = {
             'dok_gambar_desain': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'dok_izin_lingkungan': forms.ClearableFileInput(attrs={'class': 'form-control'}),

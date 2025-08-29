@@ -12,6 +12,7 @@ class Layanan(models.Model):
 
 
 class RekomendasiTeknis(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     nama_pemohon = models.CharField(max_length=255, null=True, blank=True)
     kontak_pemohon = models.CharField(max_length=100, null=True, blank=True)
     email_pemohon = models.EmailField(null=True, blank=True)
@@ -30,7 +31,6 @@ class RekomendasiTeknis(models.Model):
     dok_proposal_teknis = models.FileField(upload_to='uploads/dokumen/', blank=True, null=True)
     dok_rencana_operasi = models.FileField(upload_to='uploads/dokumen/', blank=True, null=True)
     dok_surat_permohonan = models.FileField(upload_to='uploads/dokumen/', blank=True, null=True)
-
     
     def __str__(self):
         return self.nama_pemohon if self.nama_pemohon else "Tanpa Nama"
@@ -46,7 +46,7 @@ class Intake(models.Model):
         ('waduk_/_kolam_tampungan', 'Waduk / Kolam Tampungan'),
         ('mata_air', 'Mata Air'),
     ]
-
+    
     rekomtek = models.ForeignKey(RekomendasiTeknis, on_delete=models.CASCADE, related_name='intakes')
     sumber_air = models.CharField(max_length=50, choices=SUMBER_AIR_CHOICES, blank=True, null=True)
     kelurahan_desa = models.CharField(max_length=100, blank=True, null=True)
@@ -86,9 +86,8 @@ class StatusRekomendasiTeknis(models.Model):
     )
 
     keterangan = models.TextField(blank=True, null=True)  # isi kalau ditolak
-    jadwal_kunjungan_lapangan = models.DateField(blank=True, null=True)
     tanggal_kunjungan_lapangan_1 = models.DateField(blank=True, null=True)
-    tanggal_kunjungan_lapangan_2 = models.DateField(blank=True, null=True)
+    jadwal_monitoring = models.FileField(blank=True, null=True)
     tanggal_kirim = models.DateField(auto_now=True)
 
     def __str__(self):

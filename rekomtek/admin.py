@@ -122,6 +122,12 @@ class RekomendasiTeknisAdmin(admin.ModelAdmin):
     search_fields = ['nama_perusahaan', 'nama_pemohon']
     inlines = [IntakeInline]
     actions = [export_to_word, export_to_pdf]
+    readonly_fields = ['user']  # user hanya bisa dibaca
+
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:  # kalau data baru
+            obj.user = request.user
+        super().save_model(request, obj, form, change)
 
     def aksi(self, obj):
         return format_html(
@@ -133,6 +139,7 @@ class RekomendasiTeknisAdmin(admin.ModelAdmin):
             f'/admin/rekomtek/rekomendasiteknis/{obj.id}/delete/',
         )
     aksi.short_description = 'Aksi'
+
 
 # ===== Admin Lainnya =====
 @admin.register(Intake)
@@ -148,6 +155,5 @@ class LayananAdmin(admin.ModelAdmin):
 
 @admin.register(StatusRekomendasiTeknis)
 class StatusRekomendasiTeknisAdmin(admin.ModelAdmin):
-    list_display = ['rekomtek', 'jadwal_kunjungan_lapangan', 'tanggal_kunjungan_lapangan_1', 'tanggal_kunjungan_lapangan_2', 'tanggal_kirim']
-    list_filter = ['jadwal_kunjungan_lapangan']
+    list_display = ['rekomtek', 'tanggal_kunjungan_lapangan_1', 'jadwal_monitoring', 'tanggal_kirim']
     search_fields = ['rekomtek__nama_pemohon', 'rekomtek__nama_perusahaan']

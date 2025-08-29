@@ -5,6 +5,7 @@
   <div class="row">
     <!-- Total Permohonan -->
     <div class="col-lg-3 col-md-6 col-sm-6">
+      <a href="{% url 'histori_permohonan' %}?status=all" style="text-decoration:none;">
       <div class="card card-stats bg-info text-white shadow">
         <div class="card-body">
           <div class="row">
@@ -22,10 +23,12 @@
           </div>
         </div>
       </div>
+    </a>
     </div>
 
     <!-- Diterima -->
     <div class="col-lg-3 col-md-6 col-sm-6">
+      <a href="{% url 'status_diterima' %}">
       <div class="card card-stats bg-success text-white shadow">
         <div class="card-body">
           <div class="row">
@@ -43,6 +46,7 @@
           </div>
         </div>
       </div>
+      </a>
     </div>
 
     <!-- Ditolak -->

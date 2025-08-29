@@ -1,0 +1,443 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil SDA (RPJMD) – Portal Informasi SDA</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (opsional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Aksen warna bisa kamu sesuaikan dengan tema PUPR/SDA */
+    :root{
+      --brand:#0d6efd;           /* primary */
+      --brand-soft:#e9f2ff;      /* background lembut */
+      --brand-dark:#0b4bb3;      /* hover/darker */
+    }
+    .section-title{
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom: .75rem;
+    }
+    .subtitle{
+      color:#6c757d;
+      margin-bottom:1.25rem;
+    }
+    .kpi-card{
+      border:1px solid rgba(13,110,253,.15);
+      background: linear-gradient(180deg, #fff, var(--brand-soft));
+    }
+    .kpi-value{
+      font-size:1.75rem;
+      font-weight:700;
+    }
+    .table thead th{
+      background:#f8f9fa;
+      font-weight:600;
+    }
+    .badge-soft{
+      background-color: var(--brand-soft);
+      color: var(--brand-dark);
+      border: 1px solid rgba(13,110,253,.25);
+    }
+    .anchor-offset{ scroll-margin-top: 90px; } /* biar anchor tak ketutup navbar */
+    .sticky-toc{ top: 90px; }
+    .hero{
+      background: linear-gradient(135deg, var(--brand-soft), #ffffff);
+      border-bottom: 1px solid #eef2f7;
+    }
+  </style>
+</head>
+{% include 'halaman/navbar.html' %}
+<body>
+
+<!-- NAV/Breadcrumb (opsional, sesuaikan dengan navbar situsmu) -->
+<header class="hero py-4">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-2">
+        <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+        <li class="breadcrumb-item"><a href="#">Publikasi</a></li>
+        <li class="breadcrumb-item"><a href="#">Media Informasi</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Profil SDA</li>
+      </ol>
+    </nav>
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div>
+        <h1 class="mb-1">Profil Sumber Daya Air (RPJMD)</h1>
+        <p class="text-muted mb-0">Gambaran kondisi eksisting, baseline indikator, dan arah kebijakan sektor SDA sebagai dasar perencanaan RPJMD.</p>
+      </div>
+      <span class="ms-auto badge rounded-pill text-bg-light">
+        <i class="bi bi-clock-history me-1"></i> Terakhir diperbarui: <span id="lastUpdated">—</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="py-4">
+  <div class="container">
+    <div class="row g-4">
+      <!-- TOC Kanan/Kiri (sticky) -->
+      <aside class="col-lg-3 order-lg-2">
+        <div class="position-sticky sticky-toc">
+          <div class="card">
+            <div class="card-header fw-semibold">Navigasi Halaman</div>
+            <div class="list-group list-group-flush small">
+              <a class="list-group-item list-group-item-action" href="#ringkasan">Ringkasan KPI</a>
+              <a class="list-group-item list-group-item-action" href="#kondisi-umum">Kondisi Umum Wilayah</a>
+              <a class="list-group-item list-group-item-action" href="#potensi">Potensi & Ketersediaan SDA</a>
+              <a class="list-group-item list-group-item-action" href="#infrastruktur">Infrastruktur SDA</a>
+              <a class="list-group-item list-group-item-action" href="#permasalahan">Permasalahan Strategis</a>
+              <a class="list-group-item list-group-item-action" href="#baseline">Indikator Baseline (RPJMD)</a>
+              <a class="list-group-item list-group-item-action" href="#kebijakan">Arah Kebijakan & Strategi</a>
+              <a class="list-group-item list-group-item-action" href="#lampiran">Lampiran & Unduhan</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Konten Utama -->
+      <section class="col-lg-9 order-lg-1">
+
+        <!-- RINGKASAN KPI -->
+        <div id="ringkasan" class="anchor-offset mb-4">
+          <h2 class="section-title">Ringkasan KPI Sektor SDA</h2>
+          <p class="subtitle">Angka-angka kunci kondisi awal periode RPJMD (baseline). Silakan ganti nilai dummy berikut sesuai data resmi.</p>
+          <div class="row g-3">
+            <div class="col-md-6 col-xl-3">
+              <div class="card kpi-card p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <div class="text-muted small">Layanan Irigasi</div>
+                    <div class="kpi-value">62<span class="small">%</span></div>
+                  </div>
+                  <i class="bi bi-droplet-half fs-2 text-primary"></i>
+                </div>
+                <div class="small text-muted">Persentase layanan irigasi terhadap lahan potensial.</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="card kpi-card p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <div class="text-muted small">Air Baku Terlayani</div>
+                    <div class="kpi-value">71<span class="small">%</span></div>
+                  </div>
+                  <i class="bi bi-cup-straw fs-2 text-primary"></i>
+                </div>
+                <div class="small text-muted">Penduduk terlayani akses air baku.</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="card kpi-card p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <div class="text-muted small">Pengendalian Banjir</div>
+                    <div class="kpi-value">48<span class="small">%</span></div>
+                  </div>
+                  <i class="bi bi-hurricane fs-2 text-primary"></i>
+                </div>
+                <div class="small text-muted">Panjang sungai/kawasan terlindung banjir.</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="card kpi-card p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <div class="text-muted small">Irigasi Fungsional</div>
+                    <div class="kpi-value">128<span class="small">k ha</span></div>
+                  </div>
+                  <i class="bi bi-diagram-3 fs-2 text-primary"></i>
+                </div>
+                <div class="small text-muted">Luas sawah beririgasi fungsional.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- KONDISI UMUM -->
+        <div id="kondisi-umum" class="anchor-offset mb-4">
+          <h2 class="section-title">Kondisi Umum Wilayah</h2>
+          <p class="subtitle">Deskripsi singkat wilayah, topografi, iklim, dan pembagian Wilayah Sungai (WS) yang menjadi kewenangan.</p>
+
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="table-responsive">
+                <table class="table table-sm align-middle">
+                  <thead>
+                    <tr>
+                      <th>Aspek</th>
+                      <th>Data/Informasi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Luas Wilayah</td><td>••• km²</td></tr>
+                    <tr><td>Jumlah Penduduk</td><td>••• jiwa</td></tr>
+                    <tr><td>Curah Hujan Rata-rata</td><td>••• mm/tahun</td></tr>
+                    <tr><td>Topografi & Klimatologi</td><td>••• (dataran rendah/pesisir/perbukitan)</td></tr>
+                    <tr><td>Wilayah Sungai (WS)</td><td>Mahakam •••, Sangatta •••, dll.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <!-- Ganti iframe dengan peta/ilustrasi statis jika perlu -->
+              <div class="ratio ratio-16x9 border rounded">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d"
+                        title="Peta Wilayah (contoh)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="small text-muted mt-2">Catatan: Ganti embed di atas dengan peta WS/administratif sesuai data resmi atau peta statis dari GeoDjango.</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- POTENSI & KETERSEDIAAN -->
+        <div id="potensi" class="anchor-offset mb-4">
+          <h2 class="section-title">Potensi & Ketersediaan Sumber Daya Air</h2>
+          <p class="subtitle">Ringkasan potensi air permukaan & air tanah serta neraca kebutuhan–ketersediaan.</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-header fw-semibold"><i class="bi bi-water me-2"></i>Air Permukaan</div>
+                <div class="card-body small">
+                  <ul class="mb-0">
+                    <li>Panjang sungai utama: ••• km</li>
+                    <li>Debit rata-rata: ••• m³/detik</li>
+                    <li>Waduk/Bendungan/Embung: ••• unit (kapasitas ••• juta m³)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-header fw-semibold"><i class="bi bi-moisture me-2"></i>Air Tanah</div>
+                <div class="card-body small">
+                  <ul class="mb-0">
+                    <li>Cekungan Air Tanah: ••• CAT</li>
+                    <li>Potensi akuifer: ••• (sedimen/karst/dll.)</li>
+                    <li>Kualitas air: ••• (indikasi parameter utama)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header fw-semibold"><i class="bi bi-activity me-2"></i>Neraca Air (Supply vs Demand)</div>
+                <div class="card-body small">
+                  <div class="table-responsive">
+                    <table class="table table-sm">
+                      <thead>
+                        <tr>
+                          <th>Sektor</th><th>Kebutuhan</th><th>Ketersediaan</th><th>Selisih</th><th>Keterangan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Domestik</td><td>••• l/det</td><td>••• l/det</td><td>± •••</td><td>—</td></tr>
+                        <tr><td>Irigasi</td><td>••• l/det</td><td>••• l/det</td><td>± •••</td><td>—</td></tr>
+                        <tr><td>Industri</td><td>••• l/det</td><td>••• l/det</td><td>± •••</td><td>—</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <span class="badge badge-soft rounded-pill">Sumber: Data OPD/UPTD SDA, Bappeda, & Balai</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- INFRASTRUKTUR -->
+        <div id="infrastruktur" class="anchor-offset mb-4">
+          <h2 class="section-title">Infrastruktur SDA</h2>
+          <p class="subtitle">Daftar infrastruktur utama beserta kondisi fungsionalitasnya.</p>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead>
+                <tr>
+                  <th>Infrastruktur</th><th>Jumlah</th><th>Kondisi</th><th>Lokasi/WS</th><th>Keterangan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Bendungan</td><td>••• unit</td><td>Berfungsi/Perbaikan</td><td>•••</td><td>Nama-nama utama…</td></tr>
+                <tr><td>Embung</td><td>••• unit</td><td>Berfungsi</td><td>•••</td><td>—</td></tr>
+                <tr><td>Irigasi</td><td>••• ha</td><td>Fungsional •••%</td><td>•••</td><td>Jaringan primer/sekunder/tersier</td></tr>
+                <tr><td>Pengendali Banjir</td><td>••• km</td><td>—</td><td>•••</td><td>Tanggul, normalisasi, sudetan</td></tr>
+                <tr><td>Pengaman Pantai</td><td>••• km</td><td>—</td><td>•••</td><td>Area rawan abrasi</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- PERMASALAHAN -->
+        <div id="permasalahan" class="anchor-offset mb-4">
+          <h2 class="section-title">Permasalahan Strategis SDA</h2>
+          <p class="subtitle">Isu-isu kunci yang menjadi fokus kebijakan pada periode RPJMD.</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="list-group small">
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Layanan irigasi belum optimal (rehab jaringan, efisiensi distribusi).
+                </div>
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Ketersediaan air baku belum merata antar wilayah/kabupaten.
+                </div>
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Banjir musiman di kawasan perkotaan & hilir sungai.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="list-group small">
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Kekeringan saat kemarau panjang pada daerah tadah hujan.
+                </div>
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Kerusakan DAS (laju sedimentasi, alih fungsi lahan).
+                </div>
+                <div class="list-group-item d-flex">
+                  <i class="bi bi-exclamation-triangle me-2 text-warning"></i>
+                  Kualitas air menurun pada beberapa titik pantau.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- BASELINE RPJMD -->
+        <div id="baseline" class="anchor-offset mb-4">
+          <h2 class="section-title">Indikator Baseline (RPJMD)</h2>
+          <p class="subtitle">Kondisi awal & target akhir periode RPJMD untuk sektor SDA.</p>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead>
+                <tr>
+                  <th>Indikator</th><th>Baseline (Tahun Awal)</th><th>Target Akhir RPJMD</th><th>Sumber Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Persentase layanan irigasi</td><td>••• %</td><td>••• %</td><td>OPD SDA/Bappeda</td>
+                </tr>
+                <tr>
+                  <td>Luas sawah beririgasi fungsional</td><td>••• ha</td><td>••• ha</td><td>OPD SDA/Dinas Pertanian</td>
+                </tr>
+                <tr>
+                  <td>Penduduk terlayani air baku</td><td>••• %</td><td>••• %</td><td>PDAM/UPTD Air Baku</td>
+                </tr>
+                <tr>
+                  <td>Panjang pengaman pantai terbangun</td><td>••• km</td><td>••• km</td><td>OPD SDA</td>
+                </tr>
+                <tr>
+                  <td>Tingkat pengendalian banjir</td><td>••• %</td><td>••• %</td><td>OPD SDA/Balai</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="badge badge-soft rounded-pill">Catatan: Samakan indikator dengan RPJMD daerahmu.</span>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- ARAH KEBIJAKAN & STRATEGI -->
+        <div id="kebijakan" class="anchor-offset mb-4">
+          <h2 class="section-title">Arah Kebijakan & Strategi RPJMD</h2>
+          <p class="subtitle">Kebijakan utama dan strategi implementasi 5 tahunan.</p>
+
+          <div class="accordion" id="kebijakanAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="k1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="true">
+                  Kebijakan: Penguatan pengelolaan SDA berkelanjutan
+                </button>
+              </h2>
+              <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#kebijakanAccordion">
+                <div class="accordion-body small">
+                  <ul class="mb-0">
+                    <li>Pembangunan bendungan/embung prioritas untuk ketahanan air.</li>
+                    <li>Rehabilitasi & modernisasi jaringan irigasi.</li>
+                    <li>Konservasi DAS & pengendalian banjir terpadu (structural & non-structural).</li>
+                    <li>Peningkatan akses air baku masyarakat & industri strategis.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="k2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
+                  Strategi Pelaksanaan & Tahapan
+                </button>
+              </h2>
+              <div id="c2" class="accordion-collapse collapse" data-bs-parent="#kebijakanAccordion">
+                <div class="accordion-body small">
+                  <ol class="mb-0">
+                    <li><strong>Tahun 1–2:</strong> audit & baseline detail, FS/DED prioritas, quick wins rehabilitasi.</li>
+                    <li><strong>Tahun 3–4:</strong> konstruksi utama (bendungan/embung, normalisasi), modernisasi irigasi.</li>
+                    <li><strong>Tahun 5:</strong> komisioning, operasi & pemeliharaan, evaluasi capaian indikator.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <!-- LAMPIRAN -->
+        <div id="lampiran" class="anchor-offset mb-4">
+          <h2 class="section-title">Lampiran & Unduhan</h2>
+          <p class="subtitle">Dokumen pendukung (profil lengkap, peta, tabel rinci, dsb.).</p>
+          <ul class="list-unstyled small">
+            <li class="mb-2">
+              <i class="bi bi-filetype-pdf me-2"></i>
+              <a href="#">Profil SDA (PDF)</a> <span class="text-muted">— versi cetak ringkas</span>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-table me-2"></i>
+              <a href="#">Tabel Indikator Baseline (XLSX)</a> <span class="text-muted">— bisa di-update berkala</span>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-map me-2"></i>
+              <a href="#">Peta WS & Infrastruktur (GeoJSON/ZIP)</a> <span class="text-muted">— integrasi dengan GeoDjango</span>
+            </li>
+          </ul>
+        </div>
+
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="py-4 border-top">
+  <div class="container small text-muted d-flex flex-wrap gap-2 justify-content-between">
+    <span>© 2025 Portal Informasi SDA</span>
+    <span>Sumber data: OPD SDA, Bappeda, Balai/BBWS terkait</span>
+  </div>
+</footer>
+
+<script>
+  // Tampilkan tanggal update otomatis (boleh diganti dari backend)
+  document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('id-ID');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
