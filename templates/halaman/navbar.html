@@ -1,0 +1,108 @@
+<nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a href="/"><i class="fa-solid fa-house fa-2x"></i></a></li>
+
+    <!-- Profil -->
+    <li class="dropdown">
+      <a href="#"><span>PROFIL</span> <i class="arrow-induk bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="{% url 'visi_misi' %}">Visi dan Misi</a></li>
+        <li><a href="{% url 'tugas_fungsi' %}">Tugas dan Fungsi</a></li>
+        <li><a href="{% url 'struktur_organisasi' %}">Struktur Organisasi</a></li>
+        <li><a href="{% url 'sejarah' %}">Sejarah</a></li>
+        <li><a href="https://maps.app.goo.gl/ZEyGVMGosLNpjF5m8" target="_blank">Lokasi Kantor</a></li>
+      </ul>
+    </li>
+
+    <!-- Kelembagaan -->
+    <li class="dropdown">
+      <a href="#"><span>KELEMBAGAAN</span> <i class="arrow-induk bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="{% url 'tkpsda' %}">TKPSDA</a></li>
+        <li><a href="{% url 'dewan_sda' %}">Dewan Sumber Daya Air</a></li>
+        <li><a href="{% url 'komisi_irigasi' %}">KOMISI IRIGASI</a></li>
+      </ul>
+    </li>
+
+    <!-- APLIKASI -->
+    <li class="dropdown">
+      <a href="#"><span>APLIKASI</span> <i class="arrow-induk bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="https://katalog-peta.portal-sdadpuprkaltim.my.id/geonetwork" target="_blank">Katalog Peta Sumber Daya Air</a></li>
+        <li><a href="http://ews.portal-sdadpuprkaltim.info/" target="_blank">Early Warning Sistem</a></li>
+        <li><a href="http://sih3.gginformatika.com/" target="_blank">SIH3</a></li>
+        <li><a href="https://srikandi.layanan.go.id/" target="_blank">E - Office SRIKANDI</a></li>
+        <li><a href="https://siteman-irigasi.kaltimprov.go.id/" target="_blank">Siteman Irigasi Kaltim</a></li>
+      </ul>
+    </li>
+
+    <!-- PUBLIKASI -->
+    <li class="dropdown">
+      <a href="#"><span>PUBLIKASI</span> <i class="arrow-induk bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <!-- Submenu: Informasi SDA -->
+        <li class="dropdown">
+          <a href="#"><span>Informasi SDA</span> <i class="arrow-sub bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="{% url 'pola_wilayah_sungai' %}">Pola Wilayah Sungai</a></li>
+            <li><a href="{% url 'infrastruktur_sda' %}">Infrastruktur SDA</a></li>
+            <li><a href="{% url 'hari_air_dunia' %}">Hari Air Dunia</a></li>
+            <li><a href="{% url 'rencana_psda' %}">Rencana PSDA Wilayah Sungai</a></li>
+            <li><a href="{% url 'sebaran_perizinan_sda' %}">Peta Sebaran Perizinan SDA</a></li>
+            <li><a href="{% url 'pemberdayaan_masyarakat' %}">Pemberdayaan Masyarakat</a></li>
+          </ul>
+        </li>
+        <!-- Submenu: Perencanaan -->
+        <li class="dropdown">
+          <a href="#"><span>Perencanaan & Kinerja</span> <i class="arrow-sub bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="{% url 'renstra_sda' %}">Renstra SDA</a></li>
+            <li><a href="{% url 'laporan_kinerja' %}">Laporan Kinerja DPUPRPERA KALTIM 2024</a></li>
+          </ul>
+        </li>
+        <!-- Submenu: Media -->
+        <li class="dropdown">
+          <a href="#"><span>Media Informasi</span> <i class="arrow-sub bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="{% url 'majalah_banyu' %}">Majalah Banyu</a></li>
+            <li><a href="{% url 'profil_sda' %}">Profil SDA</a></li>
+            <li><a href="{% url 'publikasi_hidrologi' %}">Publikasi Hidrologi</a></li>
+          </ul>
+        </li>
+        <!-- Submenu: Galeri -->
+        <li class="dropdown">
+          <a href="#"><span>Galeri</span> <i class="arrow-sub bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="{% url 'foto' %}">Galeri Foto</a></li>
+            <li><a href="{% url 'video' %}">Galeri Video</a></li>
+          </ul>
+        </li>
+        <!-- Submenu: Survey -->
+        <li class="dropdown">
+          <a href="#"><span>Hasil Survey Kepuasan</span> <i class="arrow-sub bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a href="{% url 'ikm' %}">Indeks Kepuasan Masyarakat (IKM)</a></li>
+            <li><a href="{% url 'pelayanan_hidrologi' %}">Pelayanan Hidrologi dan Kualitas Air</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    
+    <!-- Layanan Publik -->
+    <li class="dropdown">
+      <a href="#"><span>LAYANAN PUBLIK</span> <i class="arrow-induk bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="https://www.lapor.go.id/" target="_blank">Pengaduan</a></li>
+        <li><a href="{% url 'peraturan' %}">Peraturan</a></li>
+        <li><a href="{% url 'sop' %}">SOP</a> </li>
+        <li><a href="{% url 'pelayanan_rekomtek' %}">Pelayanan Rekomtek</a></li>
+      </ul>
+    </li>
+
+    <!-- Contact -->
+    <li><a href="{% url 'contact' %}">HUBUNGI KAMI</a></li>
+  </ul>
+
+  <!-- Tombol toggle menu mobile -->
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>

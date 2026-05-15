@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{{ title }}</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MediTrust
+  * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
+  * Updated: Jul 04 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="about-page">
+
+<!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+     
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+          {% else %}
+            <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+  </header> <!--End Header-->
+
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Publikasi</a></li>
+            <li class="breadcrumb-item">Informasi SDA</li>
+            <li class="breadcrumb-item active current">Pola Wilayah Sungai</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="title-wrapper">
+        <h1>Pola Wilayah Sungai</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+
+{% block content %}
+<div class="container">
+  <h2 class="text-center">
+    Dokumen Pola Pengelolaan Sumber Daya Air Wilayah Sungai Karangan Provinsi Kalimantan Timur
+  </h2>
+  <ul class="list-group">
+    {% for f in file %}
+      <li class="list-group-item mb-3">
+        <h5>{{ f.judul }}</h5>
+
+        <!-- Preview PDF -->
+        <div class="ratio ratio-16x9 mb-2">
+          <iframe src="{{ f.file.url }}" width="100%" height="600px"></iframe>
+        </div>
+
+        <!-- Tombol download -->
+        <a class="btn btn-primary btn-sm" href="{{ f.file.url }}" target="_blank">
+          <i class="bi bi-download me-2"></i>Lihat Selengkapnya
+        </a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Tidak ada file diunggah.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+  </main>
+
+  <!-- footer!!! -->
+  {% include 'halaman/footer.html' %}
+  <!-- end footer -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Pilih Jenis Layanan Permohonan</h2>
+    <p class="text-muted">Silakan pilih salah satu layanan di bawah untuk melanjutkan.</p>
+  </div>
+
+  <div class="row g-4 justify-content-center">
+    <!-- Grup 1 -->
+    <div class="col-md-5">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-primary text-white">
+          <i class="fa fa-water me-2"></i> Rekomendasi Teknis Izin SDA
+        </div>
+        <div class="card-body">
+          <a href="{% url 'form_permohonan_dashboard' %}" class="btn btn-outline-primary w-100 mb-3">
+            <i class="fa fa-industry me-1"></i> Pengusahaan SDA
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grup 2 -->
+    <div class="col-md-5">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-header bg-success text-white">
+          <i class="fa fa-tools me-2"></i> Layanan Lain
+        </div>
+        <div class="card-body">
+          <a href="{% url 'form_pelaksanaan_dashboard' %}" class="btn btn-outline-success w-100 mb-3">
+            <i class="fa fa-hard-hat me-1"></i> Pelaksanaan Konstruksi
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

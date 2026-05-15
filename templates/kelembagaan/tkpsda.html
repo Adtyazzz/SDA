@@ -1,0 +1,253 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{{ title }}</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css'%}" rel="stylesheet">
+
+</head>
+
+<body class="terms-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <div class="navbar-brand d-flex align-items-center">
+          <img src="https://www.kaltimprov.go.id/images/logofavicon.png" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+          <h1 class="sitename m-0">Portal Informasi SDA</h1>
+        </div>
+      </a>
+
+      {% include 'halaman/navbar.html' %}
+
+      {% if user.is_authenticated %}
+        {% if user.is_staff or user.is_superuser %}
+          <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+        {% endif %}
+      {% else %}
+        <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main" style="padding-top: auto;">
+
+    <!-- Breadcrumb -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Profil</a></li>
+            <li class="breadcrumb-item active current">TKPSDA</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="title-wrapper" data-aos="zoom-in">
+      <h1 class="page-heading">Tugas & Fungsi TKPSDA WS Lintas Kabupaten/Kota</h1>
+    </div>
+
+    <!-- Tugas -->
+    <div class="title-wrapper" data-aos="zoom-in">
+      <h2 class="page-heading">TUGAS</h2>
+      <p class="page-subheading">
+        TKPSDA WS Lintas Kabupaten/Kota mempunyai tugas membantu gubernur dalam koordinasi pengelolaan sumber daya air melalui:
+    </div>
+
+    <div class="misi" data-aos="fade-up">
+      <div class="misi-item"><span class="number">A</span> Pembahasan rancangan pola dan rancangan rencana pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota guna perumusan bahan pertimbangan untuk penetapan pola dan rencana pengelolaan sumber daya air.</div>
+      <div class="misi-item"><span class="number">B</span> Pembahasan rancangan program dan rancangan rencana kegiatan pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota guna perumusan bahan pertimbangan untuk penetapan program dan rencana kegiatan sumber daya air.</div>
+      <div class="misi-item"><span class="number">C</span> Pembahasan usulan rencana alokasi air dari setiap sumber air pada Wilayah Sungai lintas kabupaten/kota guna perumusan bahan pertimbangan untuk penetapan rencana alokasi air.</div>
+      <div class="misi-item"><span class="number">D</span> Pembahasan rencana pengelolaan sistem informasi hidrologi, hidrometeorologi, dan hidrogeologi pada wilayah sungai lintas kabupaten/kota untuk mencapai keterpaduan pengelolaan sistem informasi.</div>
+      <div class="misi-item"><span class="number">E</span> Pembahasan rancangan pendayagunaan kelembagaan pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota.</div>
+      <div class="misi-item"><span class="number">F</span> Pemberian pertimbangan kepada gubernur mengenai pelaksanaan pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota.</div>
+    </div>
+
+    <!-- Misi -->
+    <div class="title-wrapper" data-aos="zoom-in">
+      <h2 class="page-heading">FUNGSI</h2>
+      <p class="page-subheading">
+        Untuk melaksanakan tugas, TKPSDA WS Lintas Kabupaten/Kota menyelenggarakan fungsi koordinasi melalui:
+    </div>
+
+    <div class="misi" data-aos="fade-up">
+      <div class="misi-item"><span class="number">A</span> Konsultasi dengan pihak terkait yang diperlukan guna keterpaduan pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota serta tercapainya kesepahaman antarsektor, antarwilayah dan antarpemilik kepentingan/</div>
+      <div class="misi-item"><span class="number">B</span> Pengintegrasian dan penyelarasan kepentingan antarsektor, antarwilayah serta antarpemilik kepentingan dalam pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota.</div>
+      <div class="misi-item"><span class="number">C</span> Kegiatan pemantauan dan evaluasi pelaksanaan program dan rencana kegiatan pengelolaan sumber daya air pada Wilayah Sungai lintas kabupaten/kota.</div>
+    </div>
+
+    <!-- Gallery Foto -->
+     <div class="container my-5" data-aos="zoom-in">
+      <h2 class="text-center mb-4">GALERI KEGIATAN</h2>
+
+      <div class="swiper gallerySwiper position-relative">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_1.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_2.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_4.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_5.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_6.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_7.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_8.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_9.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_10.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_11.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_12.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_13.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_14.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_15.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_16.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_17.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'halaman/assets/img/tkpsda/TKPSDA_18.jpg' %}" class="img-fluid rounded" alt="">
+            </div>
+          </div>
+
+          <!-- Tombol Lihat Semua -->
+          {% comment %} <button class="btn btn-light btn-sm position-absolute top-0 end-0 m-2" 
+                  style="z-index: 10;"
+                  data-bs-toggle="modal" data-bs-target="#allGallery">
+            <i class="bi bi-grid"></i>
+          </button> {% endcomment %}
+
+          <!-- Tombol Navigasi -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <!-- Pagination Bullets -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+
+  </main>
+
+  <!-- Footer -->
+   {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <script>
+    var swiper = new Swiper(".gallerySwiper", {
+    loop: true,
+    speed: 800, // 800ms biar halus (default 300ms)
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    });
+  </script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+  <!-- Modal Fullscreen -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+      <div class="modal-content bg-transparent border-0 p-0">
+        <div class="modal-body d-flex align-items-center justify-content-center position-relative p-0">
+          
+          <!-- Wrapper untuk gambar supaya tombol bisa posisinya relatif ke foto -->
+          <div class="image-wrapper position-relative d-inline-block">
+            <img id="modalImage" src="" class="modal-img rounded" alt="">
+            <!-- Tombol Close -->
+            <button type="button" class="custom-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

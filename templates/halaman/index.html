@@ -1,0 +1,479 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portal Informasi SDA</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Logo_Kementerian_Pekerjaan_Umum_Republik_Indonesia.svg/2048px-Logo_Kementerian_Pekerjaan_Umum_Republik_Indonesia.svg.png" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MediTrust
+  * Template URL: https://bootstrapmade.com/meditrust-bootstrap-hospital-website-template/
+  * Updated: Jul 04 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+     
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+          {% else %}
+            <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+
+    <!-- Override btn-primary -->
+  </header> <!--End Header-->
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container-fluid p-0">
+        <div class="hero-wrapper">
+          <div class="hero-image">
+            <img src="{% static 'halaman/assets/img/health/PUpng.png' %}" alt="Advanced Healthcare" class="img-fluid">
+          </div>
+
+          <div class="hero-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
+                  <div class="content-box">
+                    <h1 data-aos="fade-up" data-aos-delay="200">Dinas PU SDA — Melayani, Membangun, dan Mengelola Air untuk Masa Depan </h1>
+                    <p data-aos="fade-up" data-aos-delay="250">Portal Informasi SDA sebagai pusat informasi dan layanan dalam pengelolaan sumber daya air. Kami berkomitmen menyediakan data, publikasi, serta layanan publik , dan mudah diakses</p>
+
+                    <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
+                      <a href="{% url 'infrastruktur_sda' %}" class="btn btn-primary">Infrastruktur SDA</a>
+                      <a href="https://siteman-irigasi.kaltimprov.go.id/" target="_blank" class="btn btn-outline">Peta Daerah Irigasi</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="features-wrapper">
+                <div class="row gy-4">
+
+                  <div class="col-lg-4">
+                    <a href="{% url 'tkpsda' %}">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
+                      <div class="feature-icon">
+                        <i class="bi bi-people-fill"></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>TKPSDA</h3>
+                        <p>Wadah koordinasi dan sinkronisasi kebijakan sumber daya air</p>
+                      </div>
+                    </div>
+                  </a>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <a href="{% url 'dewan_sda' %}">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+                      <div class="feature-icon">
+                        <i class="bi bi-droplet-fill"></i></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>Dewan Sumber Daya Air</h3>
+                        <p>Forum pertimbangan dan rekomendasi kebijakan sumber daya air</p>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <a href="{% url 'komisi_irigasi' %}">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="550">
+                      <div class="feature-icon">
+                        <i class="bi bi-tree-fill"></i>
+                      </div>
+                      <div class="feature-text">
+                        <h3>KOMISI IRIGASI</h3>
+                        <p>Lembaga koordinasi dalam pengelolaan jaringan irigasi</p>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Hero Section -->
+    
+    <!-- Home About Section -->
+    <section id="home-about" class="home-about section">
+      
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="row gy-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="about-image">
+              <img src="{% static 'halaman/assets/img/yuhu.webp' %}" alt="Modern Healthcare Facility" class="img-fluid rounded-3 mb-4">
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="cta-wrapper mt-4">
+              <h2>Bidang Sumber Daya Air</h2>
+              <!-- <a href="about.html" class="btn btn-primary">Profil SDA</a> -->
+            </div>
+            <div class="about-content">
+              <p class="lead" style="text-align: justify;">Bidang Sumber Daya Air mempunyai tugas menyelenggarakan perumusan dan pelaksanaan kebijakan di bidang pengelolaan sumber daya air sesuai dengan ketentuan peraturan perudang-undangan.</p>
+
+              <div class="row g-4 mt-4">
+                <a href="{% url 'renstra_sda' %}">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                  <div class="feature-item">
+                    <div class="icon">
+                      <i class="bi bi-journal-text"></i>
+                    </div>
+                    <h4>Renstra SDA</h4>
+                    <p>Dokumen strategi pengelolaan sumber daya air di Kalimantan Timur.</p>
+                  </div>
+                </a>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                  <a href="{% url 'laporan_kinerja' %}">
+                  <div class="feature-item">
+                    <div class="icon">
+                      <i class="bi bi-clipboard-data"></i>
+                    </div>
+                    <h4>laporan kinerja DPUPRPEA KALTIM 2024</h4>
+                    <p>Capaian program dan kegiatan SDA Kalimantan Timur tahun 2024.</p>
+                  </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+              <div class="row mt-5 pt-4 certifications-row">
+        <div class="col-12 text-center mb-4" data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-in-out-sine">
+          <h4 class="certification-title">Aplikasi Bidang SDA</h4>
+        </div>
+        <div class="col-12">
+          <div class="certifications">
+            <div class="certification-item" 
+                data-aos="fade-right" 
+                data-aos-delay="100" 
+                data-aos-duration="5000" 
+                data-aos-easing="ease-in-out-sine">
+              <a href="https://siteman-irigasi.kaltimprov.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/siteman_irigasi.png' %}" alt="Certification">
+              </a>
+            </div>
+
+            <div class="certification-item" 
+                data-aos="fade-right" 
+                data-aos-delay="200" 
+                data-aos-duration="5000" 
+                data-aos-easing="ease-in-out-sine">
+              <a href="https://www.lapor.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/2.png' %}" alt="Certification">
+              </a>
+            </div>
+
+            <div class="certification-item" 
+                data-aos="fade-right" 
+                data-aos-delay="300" 
+                data-aos-duration="5000" 
+                data-aos-easing="ease-in-out-sine">
+              <a href="https://saberpungli.polkam.go.id/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/3.png' %}" alt="Certification">
+              </a>
+            </div>
+
+            <div class="certification-item" 
+                data-aos="fade-right" 
+                data-aos-delay="400" 
+                data-aos-duration="5000" 
+                data-aos-easing="ease-in-out-sine">
+              <a href="https://sahabat.pu.go.id/eppid/" target="_blank">
+                <img src="{% static 'halaman/assets/img/clients/4.png' %}" alt="Certification">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </section><!-- /Home About Section -->
+
+    <!-- Featured Departments Section -->
+    <section id="featured-departments" class="featured-departments section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Berita Terkini</h2>
+        <p>Berita dan informasi terkini terkait kegiatan serta program Bidang Sumber Daya Air</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          {% for artikel in data_artikel %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="department-card">
+              <div class="department-image">
+                {% if artikel.thumbnail %}
+                <a href="{% url 'artikel_detail' artikel.slug %}"><img src="{{ artikel.thumbnail.url }}" alt="Cardiology Department" class="img-fluid"></a>
+                {% else %}
+               <a href="{% url 'artikel_detail' artikel.slug %}"><img src="{% static 'halaman/assets/img/notfound.jpg' %}" alt=""></a>
+                {% endif %}
+              </div>
+              <div class="department-content">
+              <h6 class="category artikel-tanggal">{{ artikel.kategori }}</h6>
+              <h3><a href="{% url 'artikel_detail' artikel.slug %}">{{ artikel.judul }}</a></h3>
+              <p>{{ artikel.isi | safe | truncatechars:'300' }}</p>
+
+              <!-- Tombol Learn More -->
+              <a href="{% url 'artikel_detail' artikel.slug %}" class="btn-learn-more">
+                <span>Baca Selengkapnya</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              
+              <!-- Tanggal -->
+                <hr class="my-2" />
+                <div class="date">
+                  <i class="fa fa-calendar"></i> {{ artikel.tgl_buat }}
+                </div>
+                <div class="date">
+                  <i class="bi bi-eye"></i> {{ artikel.views }} Dilihat
+                </div>
+
+            </div>
+
+            </div>
+          </div>
+          <!-- End Department Card -->
+          {% endfor %}
+          <div class="">
+            <a href="{% url 'list_artikel' %}"><button type="button" class="btn btn-primary">Lihat Daftar Berita Lainnya</button></a>
+            </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Departments Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Dokumentasi Kegiatan Bidang Sumber Daya Air</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="row gy-4">
+          
+          {% for foto in data_foto %}
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div>
+                <img src="{{ foto.Foto_dokumentasi.url }}" alt="Foto Dokumentasi" class="img-fluid custom-img"  />
+              </div>
+              <div class="service-content">
+                <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ foto.nama_kegiatan }}</h3>
+                <p>{{ foto.uraian_singkat }}</p>
+                <a href="{% url 'foto' %}" class="service-btn">
+                  Selengkapnya
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <hr class="my-2" />
+                <div class="date">
+                  <i class="fa fa-calendar"></i> {{ foto.tanggal_kegiatan }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- End Service Card -->
+           {% for video in data_video %}
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div>
+                 <video class="w-100 rounded" controls style="max-height: 250px; object-fit: cover;">
+              <source src="{{ video.file_video.url }}" type="video/mp4">
+              Browser Anda tidak mendukung pemutar video.
+            </video>
+              </div>
+              <div class="service-content">
+                <h3 class="judul-kartu"><i class="fas fa-water"></i> {{ video.judul_video }}</h3>
+                <p>{{ video.uraian_singkat }}</p>
+                <a href="{% url 'video' %}" class="service-btn">
+                  Selengkapnya
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <hr class="my-2" />
+                <div class="date">
+                  <i class="fa fa-calendar"></i> {{ video.tanggal_kegiatan }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- End Service Card -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Services Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 data-aos="fade-up" data-aos-delay="200">Rekomtek SDA</h2>
+            <p data-aos="fade-up" data-aos-delay="250"> Rekomtek SDA adalah rekomendasi teknis yang menjadi acuan dalam perizinan, pengelolaan, dan pemanfaatan sumber daya air secara berkelanjutan</p>
+
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+              <a href="{% url 'form_permohonan_dashboard' %}" class="btn-primary">Pengajuan Permohonan</a>
+              <a href="doctors.html" class="btn-secondary">Sebaran Perizinan</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row features-row" data-aos="fade-up" data-aos-delay="400">
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <a href="{% url 'pola_wilayah_sungai' %}">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-water"></i>
+              </div>
+              <h5>Pola Wilayah Sungai</h5>
+              <p>Dokumen perencanaan pengelolaan wilayah sungai yang menjadi pedoman dalam pemanfaatan dan perlindungan sumber daya air</p>
+              <a href="{% url 'pola_wilayah_sungai' %}" class="feature-link">
+                <span>Selengkapnya</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            </a>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <a href="{% url 'rencana_psda' %}">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-journal-text"></i>
+              </div>
+              <h5>Rencana PSDA Wilayah Sungai</h5>
+              <p>Rencana Pengelolaan Sumber Daya Air yang memuat program dan strategi pengelolaan wilayah sungai secara berkelanjutan</p>
+              <a href="{% url 'rencana_psda' %}" class="feature-link">
+                <span>Selengkapnya</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            </a>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <a href="{% url 'pemberdayaan_masyarakat' %}">
+            <div class="feature-card">
+              <div class="icon-wrapper">
+                <i class="bi bi-people-fill"></i>
+              </div>
+              <h5>Pemberdayaan Masyarakat</h5>
+              <p>Upaya meningkatkan peran serta masyarakat dalam konservasi, pemanfaatan, dan pengelolaan sumber daya air</p>
+              <a href="{% url 'pemberdayaan_masyarakat' %}" class="feature-link">
+                <span>Selengkapnya</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Emergency Info Section -->
+    
+
+  </main>
+
+{% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

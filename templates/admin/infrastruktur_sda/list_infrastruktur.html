@@ -1,0 +1,22 @@
+{% for infrastruktur in infrastruktur.pekerjaan_set.all %}
+  <tr>
+    <td>{{ infrastruktur.nama }}</td>
+    <td>{{ infrastruktur.slug }}</td>
+    <td>{{ infrastruktur.kategori }}</td>
+    <td>{{ infrastruktur.tgl_buat }}</td>
+    <td>{{ infrastruktur.tgl_update }}</td>
+    <td><a href="{% url 'pekerjaan_input' infrastruktur.id %}">Input Pekerjaan</a></td>
+  </tr>
+
+  {# Tambahkan sub-tabel pekerjaan terkait infrastruktur ini #}
+  {% for pekerjaan in infrastruktur.pekerjaansda_set.all %}
+    <tr>
+      <td colspan="6" style="padding-left: 50px;">
+        └ {{ pekerjaan.nama_pekerjaan }} - {{ pekerjaan.status_pekerjaan }}
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6" style="padding-left: 50px;">Belum ada pekerjaan</td></tr>
+  {% endfor %}
+
+{% endfor %}

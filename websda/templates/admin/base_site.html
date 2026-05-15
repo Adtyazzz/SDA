@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block branding %}
+  <a href="{% url 'admin:index' %}" class="brand-link" style="display: flex; align-items: center; gap: 10px;">
+    <img src="{% static 'Logo_PU.jpg' %}" alt="Logo Kantor" height="40" style="border-radius: 5px;" />
+    <span style="font-weight: bold;">Portal Informasi SDA</span>
+  </a>
+{% endblock %}

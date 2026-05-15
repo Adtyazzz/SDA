@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | PU Admin</title>
+    <link rel="stylesheet" href="{% static 'css/custom_admin.css' %}">
+</head>
+<body class="login">
+    <div class="login-logo">
+        <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo">
+    </div>
+
+    <div id="container">
+        <h1>Selamat datang di Admin PU</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

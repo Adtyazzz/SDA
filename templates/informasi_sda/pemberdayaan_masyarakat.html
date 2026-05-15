@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pemberdayaan Masyarakat</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css'%}" rel="stylesheet">
+
+</head>
+
+<body class="about-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+     
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+          {% else %}
+            <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+  </header> <!--End Header-->}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Informasi SDA</a></li>
+            <li class="breadcrumb-item active current">Pemberdayaan Masyarakat</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="title-wrapper text-center">
+        <h1>Pemberdayaan Masyarakat</h1>
+        <p>Kolaborasi pemerintah dan masyarakat dalam mengelola sumber daya air untuk kesejahteraan bersama.</p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="content">
+              <h2>Memberdayakan Masyarakat untuk Masa Depan yang Berkelanjutan</h2>
+              <p>
+                Pemberdayaan masyarakat merupakan langkah penting untuk menjaga keberlanjutan pengelolaan sumber daya air.
+                Warga dilibatkan secara aktif mulai dari perencanaan, pelaksanaan,
+                hingga pengawasan kegiatan yang mendukung kelestarian air dan lingkungan.
+              </p>
+
+
+             
+<div class="stats-container" data-aos="fade-up" data-aos-delay="200">
+  <div class="row gy-4">
+    
+    <div class="col-sm-6 col-lg-12 col-xl-6">
+      <div class="p-4 border rounded-3 h-100 shadow-sm">
+        <div class="d-flex align-items-start gap-3">
+          <div class="fs-3">
+            <i class="bi bi-check2-circle"></i>
+          </div>
+          <div>
+            <div class="fw-semibold mb-1">Program Berjalan Konsisten</div>
+            <p class="mb-0 text-muted small">
+              Kegiatan rutin dengan evaluasi triwulanan, monitoring partisipatif, dan tindak lanjut pasca-pelaksanaan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-12 col-xl-6">
+      <div class="p-4 border rounded-3 h-100 shadow-sm">
+        <div class="d-flex align-items-start gap-3">
+          <div class="fs-3">
+            <i class="bi bi-people"></i>
+          </div>
+          <div>
+            <div class="fw-semibold mb-1">Masyarakat Aktif Berpartisipasi</div>
+            <p class="mb-0 text-muted small">
+              Warga terlibat dalam perencanaan, pelaksanaan, hingga pengawasan kegiatan di tingkat dusun/RT.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="image-section" data-aos="fade-left" data-aos-delay="200">
+              <div class="main-image shadow rounded">
+                <img src="{% static 'halaman/assets/img/kakek.jpg'%}" alt="Pelatihan masyarakat" class="img-fluid rounded">
+              </div>
+              <div class="image-grid mt-3 d-flex gap-3">
+                <div class="grid-item flex-fill">
+                  <img src="{% static 'halaman/assets/img/sda.jpg'%}" alt="Rapat warga" class="img-fluid rounded shadow">
+                </div>
+                <div class="grid-item flex-fill">
+                  <img src="{% static 'halaman/assets/img/pgt.jpg'%}" alt="Kegiatan lapangan" class="img-fluid rounded shadow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Dokumentasi Section -->
+    <section id="dokumentasi" class="services section light-background">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header text-center mb-5">
+          <h2>Dokumentasi Kegiatan</h2>
+          <p>Kumpulan momen kegiatan pemberdayaan masyarakat dalam pengelolaan sumber daya air.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card shadow border-0">
+              <img src="{% static 'halaman/assets/img/full.jpg'%}" class="card-img-top" alt="Kegiatan gotong royong">
+              <div class="card-body">
+                <h5 class="card-title">Gotong Royong Bersama</h5>
+                <p class="card-text">Peserta kegiatan memakai kaos merah berkumpul sambil membawa karung sampah. 
+                    Mereka bersiap melakukan aksi gotong royong membersihkan lingkungan sekitar pesisir dari sampah dan gulma.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card shadow border-0">
+              <img src="{% static 'halaman/assets/img/rapat.jpg'%}" class="card-img-top" alt="Pelatihan warga">
+              <div class="card-body">
+                <h5 class="card-title">Rapat Bersama</h5>
+                <p class="card-text">Para peserta, pejabat, dan masyarakat duduk bersama dalam tenda sederhana. 
+                    Suasana ini menggambarkan sesi pembukaan atau pengarahan sebelum kegiatan dimulai. 
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card shadow border-0">
+              <img src="{% static 'halaman/assets/img/bnr.jpg'%}" class="card-img-top" alt="Diskusi kelompok">
+              <div class="card-body">
+                <h5 class="card-title">Bersih Pantai Bersama</h5>
+                <p class="card-text">Sekelompok warga bersama pegawai memegang spanduk bertuliskan “Selamatkan Laut Kita dari Sampah Plastik”. 
+                     ini menunjukkan ajakan nyata untuk menjaga kebersihan pantai dari limbah plastik.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /Dokumentasi Section -->
+
+  </main>
+
+  {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js'%}"></script>
+
+</body>
+</html>

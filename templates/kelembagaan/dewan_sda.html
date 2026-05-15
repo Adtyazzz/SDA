@@ -1,0 +1,923 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Dewan SDA</title>
+  <meta name="description" content="Struktur dan anggota Dewan Sumber Daya Air">
+  <meta name="keywords" content="Dewan SDA, Sumber Daya Air, Irigasi, Konservasi, Pengelolaan Air">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css'%}" rel="stylesheet">
+</head>
+
+<body class="doctors-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+     
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+          {% else %}
+            <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+  </header> <!--End Header-->
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Kelembagaan</a></li>
+            <li class="breadcrumb-item active current">Dewan SDA</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="title-wrapper">
+        <h1>Anggota Dewan SDA</h1>
+        <p>Dewan Sumber Daya Air berkomitmen mengelola, mengawasi, dan memberdayakan masyarakat dalam menjaga keberlanjutan air demi kesejahteraan bersama.</p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Dewan Section -->
+    <section id="doctors" class="doctors section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/1.png'%}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">KEPALA BIDANG</h4>
+                <span class="doctor-specialty">Sumber Daya Air</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/2.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">KEPALA SEKSI</h4>
+                <span class="doctor-specialty">Perencanaan Bidang Sumber Daya Air</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/3.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">KEPALA SEKSI</h4>
+                <span class="doctor-specialty">Irigasi & Rawa Bidang Sumber Daya Air</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/4.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Pengatur TK I / (II/D)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/5.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda TK I / (III/B)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/6.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda TK 1 / (III/B)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/7.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda / (III/A)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/8.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda / (III/A)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/9.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda TK I / (III/B)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/10.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata / (III/C)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/11.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata / (III/C)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/12.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda / (III/A)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/13.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata / (III/C)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/14.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata / (III/C)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/15.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata TK I / (III/D)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/16.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/17.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/18.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/19.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Pengola Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/20.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/21.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/22.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/23.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/24.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/25.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/26.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/27.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/28.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/29.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/30.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/31.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/32.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/33.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/34.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/35.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/36.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/37.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialaty">Pengolaan Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/38.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Pengolaan Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/39.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/40.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/41.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/42.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/43.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/44.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/45.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/46.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Pengola Umum Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/47.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/48.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/49.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/50.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/51.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/52.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/53.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/54.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/55.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/56.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/57.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/58.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/59.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/60.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/61.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/62.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/63.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/64.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/65.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Operator Layanan Operasional</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/68.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata Muda / (III/A)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="{% static 'halaman/assets/img/dewan/69.png' %}" alt="Ketua Dewan" class="img-fluid">
+              </div>
+              <div class="doctor-content">
+                <h4 class="doctor-name">STAFF</h4>
+                <span class="doctor-specialty">Penata / (III/C)</span>
+              </div>
+            </div>
+          </div><!-- End Card -->
+
+        </div>
+      </div>
+    </section><!-- /Dewan Section -->
+
+  </main>
+
+  {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js'%}"></script>
+
+</body>
+</html>
+

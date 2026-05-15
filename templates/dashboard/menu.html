@@ -1,0 +1,66 @@
+{% load static %}
+<div class="sidebar-wrapper">
+  <div class="user">
+    <div class="photo">
+      {% if foto_profil.avatar %}
+        <img src="{{ foto_profil.avatar.url }}" alt="">
+      {% else %}
+        <img src="{% static 'dashboard/assets/img/no_profil.jpeg' %}" />
+      {% endif %}
+    </div>
+          <div class="info">
+            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+              <span>
+                {{ user.username }}
+                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse" id="collapseExample">
+              <ul class="nav">
+                <li>
+                  <a href="{% url 'profil' %}">
+                    <span class="sidebar-mini-icon">MP</span>
+                    <span class="sidebar-normal">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'edit_profil' %}">
+                    <span class="sidebar-mini-icon">EP</span>
+                    <span class="sidebar-normal">Edit Profile</span>
+                  </a>
+                </li>
+                <li>
+               <a href="{% url 'akun_logout' %}" id="logout-link">
+                <span class="sidebar-mini-icon">L</span>
+                <span class="sidebar-normal">Logout</span>
+              </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+          <ul class="nav">
+    <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+      <a class="nav-link" href="{% url 'dashboard' %}">
+        <i class="nc-icon nc-bank"></i>
+        <p>Dashboard</p>
+      </a>
+    </li>
+
+    <li class="{% if request.resolver_match.url_name == 'pilih_layanan' %}active{% endif %}">
+      <a class="nav-link" href="{% url 'pilih_layanan' %}">
+        <i class="nc-icon nc-ruler-pencil"></i>
+        <p>Form Permohonan</p>
+      </a>
+    </li>
+
+    <li class="{% if request.resolver_match.url_name == 'status_permohonann' %}active{% endif %}">
+      <a class="nav-link" href="{% url 'status_permohonann' %}">
+        <i class="nc-icon nc-single-copy-04"></i>
+        <p>Status Permohonan</p>
+      </a>
+    </li>
+  </ul>
+      </div>
+
+ 

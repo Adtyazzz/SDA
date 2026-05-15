@@ -1,0 +1,127 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+  <div class="row">
+    <!-- Total Permohonan -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <a href="{% url 'histori_permohonan' %}?status=all" style="text-decoration:none;">
+      <div class="card card-stats bg-info text-white shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center">
+                <i class="nc-icon nc-paper"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category text-light">Total Permohonan</p>
+                <p class="card-title">{{ total_permohonan }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <!-- Diterima -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <a href="{% url 'status_diterima' %}">
+      <div class="card card-stats bg-success text-white shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center">
+                <i class="nc-icon nc-check-2"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category text-light">Diterima</p>
+                <p class="card-title">{{ total_diterima }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Ditolak -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+       <a href="{% url 'status_ditolak' %}">
+      <div class="card card-stats bg-danger text-white shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center">
+                <i class="nc-icon nc-simple-remove"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category text-light">Ditolak</p>
+                <p class="card-title">{{ total_ditolak }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <!-- Proses -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats bg-warning text-white shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center">
+                <i class="nc-icon nc-refresh-69"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category text-light">Proses</p>
+                <p class="card-title">{{ total_proses }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.getElementById('logout-link');
+
+    if (logoutLink) {
+      logoutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        Swal.fire({
+          title: 'Keluar dari akun?',
+          text: 'Anda akan keluar dari sesi saat ini.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Ya, logout',
+          cancelButtonText: 'Batal',
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#6c757d'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = logoutLink.href;
+          }
+        });
+      });
+    }
+  });
+</script>
+{% endblock %}

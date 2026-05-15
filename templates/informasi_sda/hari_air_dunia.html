@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Hari Air Dunia</title>
+  <meta name="description" content="Peringatan Hari Air Dunia untuk meningkatkan kesadaran tentang pentingnya air bersih dan pengelolaan sumber daya air secara berkelanjutan.">
+  <meta name="keywords" content="Hari Air Dunia, SDA, lingkungan, konservasi air">
+
+  <!-- Favicons -->
+  <link href="{% static 'halaman/assets/img/Logo_PU.jpg' %}" rel="icon">
+  <link href="{% static 'halaman/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'halaman/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'halaman/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'halaman/assets/css/main.css' %}" rel="stylesheet">
+
+  <style>
+    /* Tambahan style agar lebih fresh */
+    .card-custom {
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #06b6d4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: white;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body class="about-page">
+
+<!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="halaman/assets/img/logo.webp" alt=""> -->
+       
+         <div class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'halaman/assets/img/logopemprov.png' %}" alt="Logo PU" class="img-fluid me-2" style="height: 40px;">
+            <h1 class="sitename m-0">Portal Informasi SDA</h1>
+          </div>
+        </a>
+        
+        {% include 'halaman/navbar.html' %}
+     
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn-getstarted" href="{% url 'admin:index' %}">Dashboard</a>
+          {% else %}
+            <a class="btn-getstarted" href="{% url 'dashboard' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a class="btn-getstarted" href="{% url 'akun_login' %}">LOGIN</a>
+        {% endif %}
+    </div>
+  </header> <!--End Header-->
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="breadcrumbs">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Informasi SDA</a></li>
+            <li class="breadcrumb-item active current">Hari Air Dunia</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="title-wrapper text-center">
+        <h1>Hari Air Dunia</h1>
+        <p>Mari bersama menjaga air untuk kehidupan. Air bersih adalah hak semua makhluk hidup dan kunci keberlanjutan bumi.</p>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="content">
+              <h2>Air untuk Kehidupan</h2>
+              <p>
+                Hari Air Dunia diperingati setiap tanggal <strong>22 Maret</strong> sebagai pengingat betapa pentingnya air dalam kehidupan. 
+                Air bukan hanya kebutuhan dasar manusia, tetapi juga penopang ekosistem, pertanian, dan pembangunan berkelanjutan.
+              </p>
+              <p>
+                Mari kita bersama-sama menghemat, melestarikan, dan mengelola air secara bijak untuk generasi sekarang dan masa depan. 
+                Setiap tetes air sangat berharga.
+              </p>
+
+              <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+                  <div class="col-sm-6 col-lg-12 col-xl-6">
+                    <div class="stat-item">
+                      <div class="stat-number">
+                        <span data-purecounter-start="0" data-purecounter-end="2000" data-purecounter-duration="1" class="purecounter"></span>+
+                      </div>
+                      <div class="stat-label">Miliar orang bergantung pada sumber air bersih</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-12 col-xl-6">
+                    <div class="stat-item">
+                      <div class="stat-number">
+                        <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="2" class="purecounter"></span>%
+                      </div>
+                      <div class="stat-label">Penduduk dunia masih kekurangan akses air bersih</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gambar -->
+          <div class="col-lg-6">
+            <div class="image-section" data-aos="fade-left" data-aos-delay="200">
+              <div class="main-image mb-3">
+                <img src="{% static 'halaman/assets/img/HAD/rame.jpeg' %}" alt="Air untuk kehidupan" class="img-fluid rounded shadow">
+              </div>
+              <div class="image-grid d-flex gap-3">
+                <div class="grid-item w-50">
+                  <img src="{% static 'halaman/assets/img/HAD/h.nandar.jpeg' %}" alt="Sungai bersih" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="grid-item w-50">
+                  <img src="{% static 'halaman/assets/img/HAD/blk.jpeg' %}" alt="Hemat air" class="img-fluid rounded shadow-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- /About Section -->
+
+    <!-- Tips Hemat Air Section -->
+    <section class="section bg-light">
+      <div class="container" data-aos="fade-up" data-aos-delay="150">
+        <div class="section-title text-center mb-5">
+          <h2>Tips Hemat Air</h2>
+          <p>Langkah kecil kita bisa menyelamatkan miliaran liter air setiap harinya.</p>
+        </div>
+        <div class="row gy-4">
+          <div class="col-md-4">
+            <div class="card card-custom p-4 text-center">
+              <div class="icon-circle"><i class="fas fa-faucet"></i></div>
+              <h5>Gunakan Air Secukupnya</h5>
+              <p>Matikan keran saat tidak digunakan, seperti saat menyikat gigi atau mencuci piring.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-custom p-4 text-center">
+              <div class="icon-circle"><i class="fas fa-recycle"></i></div>
+              <h5>Daur Ulang Air</h5>
+              <p>Gunakan kembali air cucian untuk menyiram tanaman atau membersihkan lantai.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-custom p-4 text-center">
+              <div class="icon-circle"><i class="fas fa-tint"></i></div>
+              <h5>Perbaiki Kebocoran</h5>
+              <p>Kebocoran kecil bisa membuang ratusan liter air setiap minggu, segera perbaiki!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="section">
+      <div class="container text-center" data-aos="zoom-in" data-aos-delay="200">
+        <blockquote>
+          <h3><i class="fas fa-quote-left me-2"></i>Air adalah kehidupan. Menjaga air berarti menjaga masa depan.<i class="fas fa-quote-right ms-2"></i></h3>
+        </blockquote>
+      </div>
+    </section>
+    <!-- Dokumentasi Kegiatan Section -->
+   <section class="section bg-light">
+  <div class="container" data-aos="fade-up" data-aos-delay="200">
+    <div class="section-title text-center mb-5">
+      <h2>Dokumentasi Kegiatan</h2>
+      <p>Beberapa momen menarik dari kegiatan Hari Air Dunia.</p>
+    </div>
+
+    <div class="row gy-4">
+      <!-- Foto -->
+      <div class="col-md-4">
+        <div class="card card-custom shadow-sm overflow-hidden border-0">
+          <div class="image-wrapper">
+            <img src="{% static 'halaman/assets/img/HAD/smp.jpeg' %}" alt="Kegiatan 1">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-custom shadow-sm overflow-hidden border-0">
+          <div class="image-wrapper">
+            <img src="{% static 'halaman/assets/img/HAD/rame.jpeg' %}" alt="Kegiatan 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-custom shadow-sm overflow-hidden border-0">
+          <div class="image-wrapper">
+            <img src="{% static 'halaman/assets/img/HAD/b.jpeg' %}" alt="Kegiatan 3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.image-wrapper {
+  width: 100%;
+  height: 220px; /* bisa disesuaikan */
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* supaya gambar dipotong rapi */
+  transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+</style>
+
+    <!-- /Dokumentasi Kegiatan Section -->
+
+  </main>
+
+  {% include 'halaman/footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'halaman/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'halaman/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'halaman/assets/js/main.js' %}"></script>
+
+</body>
+</html>

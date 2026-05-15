@@ -1,0 +1,48 @@
+<!-- templates/rekomtek/tambah.html -->
+{% load leaflet_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Rekomtek</title>
+    {% leaflet_css %}
+    {% leaflet_js %}
+    <style>#map { height: 400px; margin-bottom: 15px; }</style>
+</head>
+<body>
+    <h2>Tambah Rekomtek SDA</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div id="map"></div>
+        <input type="hidden" id="id_koordinat" name="koordinat">
+
+        <h4>Foto Lokasi:</h4>
+        {{ formset.management_form }}
+        {% for fotoform in formset %}
+            {{ fotoform.as_p }}
+        {% endfor %}
+
+        <button type="submit">Simpan</button>
+    </form>
+
+    <script>
+        var map = L.map('map').setView([-0.5022, 117.1537], 12);  // Samarinda
+        var marker = L.marker([-0.5022, 117.1537], { draggable: true }).addTo(map);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        function updateKoordinat(latlng) {
+            document.getElementById("id_koordinat").value = `POINT(${latlng.lng} ${latlng.lat})`;
+        }
+
+        marker.on('dragend', function () {
+            updateKoordinat(marker.getLatLng());
+        });
+
+        updateKoordinat(marker.getLatLng());
+    </script>
+</body>
+</html>
